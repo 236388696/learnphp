@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title>goodluck</title>
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/gl.css">
+</head>
+<body>
+    <!--转盘-->
+    <div id="zhuanPan">
+        <img src="img/13_zhuanpan.png" alt="" id="zp_pan">
+        <div id="zp_car_box">
+            <img src="img/13_car.png" alt="" id="zp_car">
+        </div>
+        <img src="img/13_readyGo.png" alt="" id="zp_readyGo">
+        <img src="img/13_hand.png" alt="" id="zp_hand">
+    </div>
+    <!-- 很遗憾 -->
+    <div id="yihan">
+        <img src="img/17_henyihan.png" alt="" id="yh_yh">
+        <img src="img/13_startAgain.png" alt="" id="yh_btn" class="startAgain">
+    </div>
+    <!-- 中奖-->
+    <div id="zhongJiang">
+        <img src="img/14_bg.png" alt="" id="zj_bg">
+        <img src="img/14_prize1.png" alt="" id="zj_zp">
+        <img src="img/14_infoBtn.png" alt="" id="zj_btn">
+    </div>
+    <!-- 中奖信息-->
+    <div id="prizeInfo">
+        <div id="pi_bg">
+            <div class="pi_div1">
+                <label for="name">姓名</label>
+                <input type="text" id="name" placeholder="汉字(长度2-8位)">
+            </div>
+            <div class="pi_div2">
+                <label for="tel">电话</label>
+                <input type="text" id="tel">
+            </div>
+            <div class="pi_div3">
+                <label for="province">地址</label>
+                <select name="" id="province"></select>
+                <select name="" id="city">
+                    <option value="0">请选择</option>
+                </select>
+            </div>
+            <div class="pi_div4">
+                <input type="text" id="address">
+            </div>
+        </div>
+        <img src="img/15_btn.png" alt="" id="pi_btn">
+    </div>
+    <div id="success_submit">
+        <img src="img/16_submit.png" alt="" id="ss_bg">
+    </div>
+
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			var rect1 = {
+				x: 100,
+				y: 100,
+				r: 50,
+				color: "red"
+			}
+			var rect2 = {
+				x: 300,
+				y: 300,
+				r: 100,
+				color: "blue"
+			}
+			var arr = [rect1, rect2];
+			var index = -1; // 记录点击的哪个矩形的下角标
+			function drawRect() {
+				for(var i = 0; i < arr.length; i++) {
+					can.beginPath();
+					can.fillStyle = arr[i].color;
+					can.arc(arr[i].x, arr[i].y, arr[i].r, 0, Math.PI * 2, false);
+					can.fill();
+					can.closePath();
+
+					// arguments 参数长度
+					if(arguments.length) {
+						if(can.isPointInPath(arguments[0], arguments[1])) {
+							index = i; 
+						}
+					}
+				}
+			}
+			canvas.onmousedown = function(ev) {
+				var x = ev.offsetX;
+				var y = ev.offsetY;
+				drawRect(ev.offsetX, ev.offsetY);
+				if (index == -1){
+					return;
+				}
+				var chaX = x - arr[index].x;
+				var chaY = y - arr[index].y;
+				canvas.onmousemove = function(mv){
+					can.clearRect(0, 0, canvas.width, canvas.height);
+					arr[index].x = mv.offsetX - chaX;
+					arr[index].y = mv.offsetY - chaY;
+					checkARC(arr[0], arr[1]);
+					drawRect();
+				}
+			}
+			canvas.onmouseup = function() {
+				canvas.onmousemove = null;
+			}
+			drawRect();
+			function checkARC(arc1,arc2){
+				var disR = arc1.r+arc2.r;
+				var disX = arc1.x-arc2.x;
+				var disY = arc1.y-arc2.y;
+				if(disX*disX+disY*disY<disR*disR){
+					console.log("p");
+				}
+			}
+		</script>
+	</body>
+</html>

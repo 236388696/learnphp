@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				box-shadow: 0 0 5px 5px aquamarine;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanVas" width="600" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+
+			function Snake() {
+				this.x = 30;
+				this.y = 30;
+				this.w = 30;
+				this.h = 30;
+				this.color = "gray";
+				this.speed = 30;
+				//方向
+				this.left = false;
+				this.top = false;
+				this.right = true;
+				this.bottom = false;
+			}
+			Snake.prototype.draw = function() {
+				can.beginPath();
+				can.fillStyle = this.color;
+				can.fillRect(this.x, this.y, this.w, this.h);
+				can.closePath();
+			}
+			Snake.prototype.move = function() {
+				//根据四个属性的bool值来判断当前蛇应该往哪个方向移动
+				if(this.top) {
+					this.y -= this.speed;
+				} else if(this.right) {
+					this.x += this.speed;
+				} else if(this.left) {
+					this.x -= this.speed;
+				} else if(this.bottom) {
+					this.y += this.speed;
+				}
+			}
+			var s = new Snake();
+			setInterval(function() {
+				can.clearRect(0, 0, myCan.width, myCan.height);
+				s.draw();
+				s.move();
+			}, 100)
+			document.onkeydown = function(ev) {
+				var ev = ev||window.event;
+				switch(ev.keyCode) {
+					//left
+					case 37:
+						s.left = true;
+						s.top = false;
+						s.right = false;
+						s.bottom = false;
+						break;
+						//top
+					case 38:
+						s.left = false;
+						s.top = true;
+						s.right = false;
+						s.bottom = false;
+						break;
+						//right
+					case 39:
+						s.left = false;
+						s.top = false;
+						s.right = true;
+						s.bottom = false;
+						break;
+						//bottom
+					case 40:
+						s.left = false;
+						s.top = false;
+						s.right = false;
+						s.bottom = true;
+						break;
+					default:
+						break;
+				}
+			}
+		</script>
+	</body>
+
+</html>

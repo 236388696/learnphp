@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="check.php" method="post">
+    请输入验证码:<input type="text" name="yan"><br>
+    <img src="code.php" alt=""><br>
+    <a href="javascript:reImage()">寡人看不清,给寡人换一个</a><br>
+    <input type="submit" value="验证">
+</form>
+<script>
+    function reImage() {
+        var im = document.querySelectorAll("img")[0];
+        im.src = "code.php";
+    }
+</script>
+</body>
+</html>

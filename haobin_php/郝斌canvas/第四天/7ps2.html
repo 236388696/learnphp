@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="800"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			var img = new Image();
+			img.src = "img/5.jpg";
+			//图片加载完成时调用
+			img.onload = function(){
+				can.drawImage(img,0,0);
+				can.beginPath();
+				var str = "霍明辉";
+				can.font = "20px 微软雅黑";
+				can.strokeText(str,180,150);
+				can.closePath();
+				can.beginPath();
+				var str = "2016年8月26日";
+				can.font = "20px 微软雅黑";
+				can.strokeText(str,160,260);
+				can.closePath();
+			}
+		</script>
+	</body>
+</html>

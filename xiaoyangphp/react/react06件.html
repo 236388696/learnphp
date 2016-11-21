@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hello{
+            background-color: #f0ad4e;
+        }
+    </style>
+    <script type="application/javascript" src="js/react.js"></script>
+    <script type="application/javascript" src="js/react-dom.js"></script>
+    <script type="application/javascript" src="js/browser.min.js"></script>
+</head>
+<body>
+    <div id="test"></div>
+
+</body>
+<script type="text/babel">
+//    <!--jsx 语法 就是将html语句写到js里面-->
+    var HelloMsg = React.createClass({
+        click:function () {
+            this.refs.myInput.style.backgroundColor = "red";
+        },
+       render:function () {
+           return <div>
+               <input type="text" value="haha" ref="myInput"/>
+               <button onClick={this.click}>改变颜色</button>
+           </div>
+       }
+    });
+// this.props.children
+// props 作用是把外部参数传入组件内部
+var a = 123;
+    ReactDOM.render(
+            <div>
+            <HelloMsg>
+           </HelloMsg>
+            </div>,
+        document.getElementById('test')
+    );
+
+</script>
+</html>

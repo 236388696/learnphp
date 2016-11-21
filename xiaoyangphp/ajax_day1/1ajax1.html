@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //    AJAX即“Asynchronous JavaScript and XML”
+    //    ajax主要为了网页不需要整体刷新,只刷新局部
+    //    现代浏览器
+//    var ajaxObj = new XMLHttpRequest();
+//    //    IE
+//    var ajaxObj = new ActiveXObject("Microsoft.XMLHTTP");
+
+/*
+    //声明ajax的对象
+    var ajaxObj;
+    if(window.XMLHttpRequest){
+        ajaxObj = new XMLHttpRequest();
+    }else{
+        ajaxObj=new ActiveXObject("Microsoft.XMLHTTP")
+    }
+
+    //打开,3个参数
+    //1.请求的方法
+    //2.请求的url
+    //3.是否为异步,true表示异步
+    ajaxObj.open("GET","1.txt",true);
+
+    //发送
+    ajaxObj.send();
+
+    //监听状态
+    ajaxObj.onreadystatechange = function () {
+        //1:open方法被调用
+        //2:send方法被调用,已获取请求头
+        //3:加载中
+        //4:请求完成
+        console.log(ajaxObj.readyState);
+        if (ajaxObj.readyState == 4){
+
+            //ajax.status结果是http协议的状态码
+            //2XX代表成功
+            //3XX代表重定向
+            //4XX代表客户端错误
+            //5XX代表服务器错误
+
+          if (ajaxObj.status ==200){
+              //responseText返回结果的文本
+              console.log(ajaxObj.responseText);
+          }
+        }
+    }
+   */
+    
+    ajaxFn("1.txt",function (date) {
+        console.log(date);
+    });
+
+    function ajaxFn(url,fn) {
+        //声明ajax的对象
+        var ajaxObj;
+        if(window.XMLHttpRequest){
+            ajaxObj = new XMLHttpRequest();
+        }else{
+            ajaxObj=new ActiveXObject("Microsoft.XMLHTTP")
+        }
+         ajaxObj.open("GET",url,true);
+        ajaxObj.send();
+        ajaxObj.onreadystatechange = function () {
+            console.log(ajaxObj.readyState);
+            if (ajaxObj.readyState == 4){
+                if (ajaxObj.status ==200){
+//                    console.log(ajaxObj.responseText);
+                    fn(ajaxObj.responseText);
+            }
+            }
+        }
+    }
+
+
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

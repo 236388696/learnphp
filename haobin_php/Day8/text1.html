@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-3.0.0.js"></script>
+<script>
+    function ccc(res) {
+        console.log(res);
+    }
+    $.ajax({
+        url:"http://nssug.baidu.com/?cb=ccc&ie=utf-8&prod=image&t=0.37898601900388407&_=1473836009379",
+        type:"get",
+        dataType:"jsonp",
+        data:{
+            wd:"大连"
+        },
+        success:function (res) {
+            console.log(res);
+        }
+    })
+</script>
+</body>
+</html>

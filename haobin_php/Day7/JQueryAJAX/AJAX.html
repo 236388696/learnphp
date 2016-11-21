@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-3.0.0.js"></script>
+<script>
+    $.ajax({
+        url:"yaofangjiale.php",
+        type:"post",
+        data:{
+            name:"陈福",
+            age:"18"
+        },
+        success:function (responseText) {
+            var obj = JSON.parse(responseText);
+            console.log(obj.msg);
+        }
+    })
+</script>
+</body>
+</html>

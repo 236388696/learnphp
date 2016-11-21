@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hello{
+            background-color: #f0ad4e;
+        }
+    </style>
+    <script type="application/javascript" src="js/react.js"></script>
+    <script type="application/javascript" src="js/react-dom.js"></script>
+    <script type="application/javascript" src="js/browser.min.js"></script>
+</head>
+<body>
+<div id="test"></div>
+
+</body>
+<script type="text/babel">
+    //    <!--jsx 语法 就是将html语句写到js里面-->
+    var HelloMsg = React.createClass({
+        getInitialState: function () {
+            return{
+                a:false
+            }
+        },
+        click: function () {
+//           this.refs.myInput.style.backgroundColor = "red";
+            this.setState({a:!this.state.a});
+        },
+        componentWillMount:function () {
+            //组件在加载之前 调用
+        },
+        componentDidMount:function () {
+            //组件在加载之后 调用 只会被调用一次 就是第一次加载之后
+         },
+        render:function () {
+            var msg = this.state.a ? "游戏结束":"游戏开始";
+            return  <div>
+                {msg}
+                <div onClick={this.click}>游戏开关</div>
+            </div>;
+        }
+    });
+    // this.props.children
+    // props 作用是把外部参数传入组件内部
+    var a = 123;
+    ReactDOM.render(
+            <div>
+                <HelloMsg></HelloMsg>
+            </div>,
+            document.getElementById('test')
+    );
+
+</script>
+</html>

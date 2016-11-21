@@ -1,0 +1,20 @@
+$(".wrap_go").on("touchstart",function(){
+	$("#wrap1").hide();
+	$("#wrap2").show();
+})
+$(".wrap_begin").on("touchstart",function(){
+	window.location.assign("game.php?openid="+'openid');
+})
+$(".wrap_rule").on("touchstart",function(){
+	$(".wrap_cha").show();
+	$(".wrap_info").show();
+	$(".hezi").show()
+})
+$(document).on("touchmove",function(e){
+	e.preventDefault();
+})
+$(".wrap_cha").on("touchstart",function(){
+	$(".wrap_cha").hide();
+	$(".wrap_info").hide();
+	$(".hezi").hide();
+})

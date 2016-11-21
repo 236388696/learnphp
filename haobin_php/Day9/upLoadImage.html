@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" id="img">
+<input type="button" value="上传" onclick="btn()">
+<script>
+    function btn() {
+        var ajaxObj;
+        if(window.XMLHttpRequest){
+            ajaxObj = new XMLHttpRequest();
+        }else{
+            ajaxObj = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        ajaxObj.open("POST","upLoad.php",true);
+        //把图片对象拼接在formData里 传递图片
+        var formD = new FormData();
+        var files = document.getElementById("img").files[0];
+        formD.append("myfile",files);
+        //formD发送这个表单对象内部载着这个图片二进制文件
+        //发送表单对象
+        ajaxObj.send(formD);
+        ajaxObj.onreadystatechange = function () {
+            if(ajaxObj.readyState == 4){
+                if(ajaxObj.status == 200){
+                    console.log(ajaxObj.response);
+                }
+            }
+        };
+    }
+</script>
+</body>
+</html>

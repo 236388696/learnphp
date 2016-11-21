@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			can.beginPath();
+			//参数：x，y，半径，起始角度，终止角度，方向（true：逆时针，false：顺时针）
+			can.arc(200,200,50,0,Math.PI,true);
+			can.stroke();		
+			can.closePath();
+//			can.arc(350,350,50,0,Math.PI*2,true);
+			can.fillStyle = "aquamarine";
+			can.fill();
+//			can.closePath();
+		</script>
+	</body>
+
+</html>

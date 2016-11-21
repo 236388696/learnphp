@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			can.moveTo(300,300);
+			can.arc(300,300,200,0,-Math.PI/6,true);
+			can.fillStyle = "red";
+			can.fill();
+			can.closePath();
+			can.beginPath();
+			can.moveTo(300,300);
+			can.arc(300,300,200,-Math.PI/6,-Math.PI*2/3,true);
+			can.fillStyle = "aqua"
+			can.fill();
+			can.closePath();
+			can.beginPath();
+			can.moveTo(300,300);
+			can.arc(300,300,200,-Math.PI*2/3,-Math.PI,true);
+			can.fillStyle = "antiquewhite"
+			can.fill();
+			can.closePath();
+			can.beginPath();
+			can.moveTo(300,300);
+			can.arc(300,300,200,-Math.PI,-Math.PI*4/3,true);
+			can.fillStyle = "aqua"
+			can.fill();
+			can.closePath();
+			can.beginPath();
+			can.moveTo(300,300);
+			can.arc(300,300,200,-Math.PI*4/3,-Math.PI*9/6,true);
+			can.fillStyle = "brown"
+			can.fill();
+			can.closePath();
+			can.beginPath();
+			can.moveTo(300,300);
+			can.arc(300,300,200,-Math.PI*3/2,0,true);
+			can.fillStyle = "blue"
+			can.fill();
+			can.closePath();
+		</script>
+	</body>
+</html>

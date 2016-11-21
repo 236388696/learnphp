@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("mycanvas");
+			var can = myCan.getContext("2d");
+			function juxing(x,y,w,h,color){
+				this.x = x;
+				this.y = y;
+				this.w = w;
+				this.h = h;
+				this.color = color;
+			}
+			//创建两个矩形对象
+			var rect1 = new juxing(100,100,100,100,"blue");
+			var rect2 = new juxing(300,300,150,150,"red");
+			var arr = [rect1,rect2];
+			//如果你点的是第一个矩形，直接return，第二个不会绘制
+			//所以需要一个变量保存用户点击哪个矩形
+			function drawMyReck(){
+				//=-1是为了判断当用户没点击的时候，index=-1
+				var index = -1;
+				for(var i=0;i<arr.length;i++){
+					//取出每个数组对象
+					var rectObj = arr[i];
+					can.beginPath();
+					can.fillStyle = rectObj.color;
+					can.rect(rectObj.x,rectObj.y,rectObj.w,rectObj.h);
+					can.fill();
+					can.closePath();
+					//每循环一次，绘制一个区域，演用isPointpath判断
+					//arguments获取所有参数
+					//如果有参数再执行下代码，无参数跳过
+					if(arguments){
+						if(can.isPointInPath(arguments[0],arguments[1])){
+							//i=0时，代表第一个绘制的区域
+							//i=1时，代表绘制的第二个区域
+							//判断点击哪个矩形
+							index = i;
+						}
+					}
+				}
+				//当for执行完，return点击矩形下角标或者-1
+				return index;
+			}
+			myCan.onmousedown = function(ev){
+				//保存点击的矩形在数组中的下角标
+				var index = drawMyReck(ev.offsetX,ev.offsetY);
+				var rectObj = arr[index];
+				//如果点击空白区域，drawMyRect返回的是-1（因为没有点击到任何元素）
+				//如果是-1，则跳出怎个方法，不继续执行以下代码
+				if(index ==-1){
+					return;
+				}
+				//获取用户点击的位置和矩形左上角坐标的差
+				var chaX = ev.offsetX-rectObj.x;
+				var chaY = ev.offsetY-rectObj.y;
+				myCan.onmousemove = function(moveEv){
+					can.clearRect(0,0,myCan.width,myCan.height);
+					//移动之后举行的新位置
+					var newX = moveEv.offsetX-chaX;
+					var newY = moveEv.offsetY-chaY;
+					rectObj.x = newX;
+					rectObj.y = newY;
+					//检测碰撞
+					if(checkPeng(arr[0],arr[1])){
+						alert("peng");
+					}
+					drawMyReck();
+//					var a0 = arr[0];
+//					var a1 = arr[1];
+//					if(a0.x+a0.w>a1.x&&a0.x<a1.x+a1.w&&a0.y+a0.h>a1.y&&a0.y<a1.y+a1.h){
+//						console.log("yes");
+//					}
+				}
+			}
+			myCan.onmouseup = function(){
+				myCan.onmousemove = "";
+			}
+			drawMyReck();
+			//检测碰撞的方法
+			//方法使用说明，传递两个待检测的对象
+			
+			//说明：矩形对象必须使用x，y，w，h属性，否则无法使用
+			function checkPeng(obj1,obj2){
+				//先算临界值
+				//横向临界值
+				var disX = (obj1.w/2)+obj2.w/2;
+				//纵向临界值
+				var disY = (obj1.h/2)+obj2.h/2;
+				//计算两个矩形对象中心的距离
+				var centerX = Math.abs(obj2.x+(obj2.w/2)-(obj1.x+(obj1.w/2)));
+				var centerY = Math.abs(obj2.y+(obj2.h/2)-(obj1.y+(obj1.h/2)));
+				//判断
+				if(centerX<disX&&centerY<disY){
+					return true;
+				}else{
+					return false;
+				}
+			}
+			
+			
+		</script>
+	</body>
+</html>

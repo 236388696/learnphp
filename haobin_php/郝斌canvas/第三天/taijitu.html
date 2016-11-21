@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+//			can.save();
+//			can.translate(300,300);
+//			can.restore();
+//			can.rotate(Math.PI/6);
+			can.translate(300,300)
+			function createYu(){
+				can.beginPath();
+				can.arc(0,0,200,-Math.PI/2,Math.PI/2,true);
+				can.stroke();		
+				can.closePath();
+				can.fillStyle = "black";
+				can.fill();
+				can.beginPath();
+				can.arc(0,0,200,-Math.PI/2,Math.PI/2,false);
+				can.stroke();		
+				can.closePath();
+				can.fillStyle = "white";
+				can.fill();
+				can.beginPath();
+				can.arc(0,100,100,0,Math.PI*2,false);
+				can.stroke();		
+				can.closePath();
+				can.fillStyle = "black";
+				can.fill();
+				can.beginPath();
+				can.arc(0,-100,100,0,Math.PI*2,true);
+//				can.stroke();		
+				can.closePath();
+				can.fillStyle = "white";
+				can.fill();
+				can.beginPath();
+				can.arc(0,-100,30,0,Math.PI*2,true);
+				can.fillStyle = "black";
+				can.fill();
+				can.closePath();
+				can.beginPath();
+				can.arc(0,100,30,0,Math.PI*2,true);
+				can.fillStyle = "white";
+				can.fill();
+				can.closePath();
+			}
+//			setInterval(function(){
+//				can.clearRect(0,0,800,600);
+//				can.translate(300,300);
+//				can.rotate(-Math.PI / 180);
+//				can.translate(-300,-300);
+//				createYu();
+//			},10)
+			
+//			setInterval(function(){
+//				can.clearRect(0,0,800,600);
+//				can.rotate(-Math.PI / 180);
+//				createYu();
+//			},10)
+			
+			var deg = -Math.PI/180;
+			function move(){
+				can.clearRect(0,0,800,600);
+				can.rotate(deg);
+				//浏览器刷新
+				createYu();window.requestAnimationFrame(move);
+			}
+			move();
+		</script>
+	</body>
+</html>

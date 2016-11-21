@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			var str = "HELLO WORLD";
+			//字体大小（px），必须设置字体
+			can.font = "40px 微软雅黑";
+			//1.空心的字符
+			//参数，文本，文字左下角起始x坐标，y坐标
+			can.strokeText(str,100,100);
+			//2.实心字符串
+			can.fillStyle = "aqua";
+			can.fillText(str,100,200);
+			//3.渐变字符串
+			//参数：渐变起始x，y渐变终止x，y
+			var gra = can.createLinearGradient(100,300,280,300);
+			gra.addColorStop(0,"red");
+			gra.addColorStop(0.5,"yellow");
+			gra.addColorStop(1,"green");
+			can.fillStyle = gra;
+			can.fillText(str,100,300);
+			can.closePath();
+		</script>
+	</body>
+</html>

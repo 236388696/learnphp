@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			can.beginPath();
+			can.moveTo(50,50);
+			can.lineTo(20,50);
+			can.lineTo(20,100);
+			can.lineTo(50,100);
+			can.lineWidth = 5;
+			can.strokeStyle = "red";
+			can.stroke();
+			can.closePath();
+			var can1 = canvas.getContext("2d");
+			can1.beginPath();
+			can1.moveTo(70,50);
+			can1.lineTo(100,50);
+			can1.lineTo(100,100);
+			can1.lineTo(70,100);
+			can.lineWidth = 5;
+			can.strokeStyle = "yellow";
+			can1.stroke();
+			can1.closePath();
+		</script>
+	</body>
+</html>

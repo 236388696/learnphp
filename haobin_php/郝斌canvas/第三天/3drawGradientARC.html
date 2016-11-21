@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="700"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			//参数：渐变起始想x，y，r，渐变结束x，y，r
+			var gra = can.createRadialGradient(300,300,100,300,300,300);
+			gra.addColorStop(0,"red");
+			gra.addColorStop(0.5,"yellow");
+			gra.addColorStop(1,"green");
+			can.fillStyle = gra;
+			can.arc(300,300,300,0,Math.PI*2,true);
+			can.fill();
+			
+			
+			can.closePath();
+		</script>
+	</body>
+</html>

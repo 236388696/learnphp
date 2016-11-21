@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("mycanvas");
+			var can = myCan.getContext("2d");
+			function juxing(x,y,w,h,color){
+				this.x = x;
+				this.y = y;
+				this.w = w;
+				this.h = h;
+				this.color = color;
+			}
+			//创建两个矩形对象
+			var rect1 = new juxing(100,100,100,100,"blue");
+			var rect2 = new juxing(300,300,150,150,"red");
+			var arr = [rect1,rect2];
+			//如果你点的是第一个矩形，直接return，第二个不会绘制
+			//所以需要一个变量保存用户点击哪个矩形
+			function drawMyReck(){
+				//=-1是为了判断当用户没点击的时候，index=-1
+				var index = -1;
+				for(var i=0;i<arr.length;i++){
+					//取出每个数组对象
+					var rectObj = arr[i];
+					can.beginPath();
+					can.fillStyle = rectObj.color;
+					can.rect(rectObj.x,rectObj.y,rectObj.w,rectObj.h);
+					can.fill();
+					can.closePath();
+					//每循环一次，绘制一个区域，演用isPointpath判断
+					//arguments获取所有参数
+					//如果有参数再执行下代码，无参数跳过
+					if(arguments){
+						if(can.isPointInPath(arguments[0],arguments[1])){
+							//i=0时，代表第一个绘制的区域
+							//i=1时，代表绘制的第二个区域
+							//判断点击哪个矩形
+							index = i;
+						}
+					}
+				}
+				//当for执行完，return点击矩形下角标或者-1
+				return index;
+			}
+			myCan.onclick = function(ev){
+				can.clearRect(0,0,myCan.width,myCan.height);
+				console.log(drawMyReck(ev.offsetX,ev.offsetY));
+			}
+			drawMyReck();
+			
+			
+		</script>
+	</body>
+</html>

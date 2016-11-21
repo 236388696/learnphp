@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        if (window.XMLHttpRequest){
+            var ajaxObj = new XMLHttpRequest();
+        }else{
+            var ajaxObj = new ActiveXObject("Microsoft.XMLHttp");
+        }
+        ajaxObj.open("post","ajax_post.php",true);
+
+        //设置请求头文件
+        ajaxObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        ajaxObj.send("user=wenwen");
+        ajaxObj.onreadystatechange = function () {
+            if (ajaxObj.readyState == 4){
+
+                if (ajaxObj.status == 200){
+                    console.log(ajaxObj.responseText);
+                }
+
+
+            }
+        }
+    </script>
+</body>
+</html>

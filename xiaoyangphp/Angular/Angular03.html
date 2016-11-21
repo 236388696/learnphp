@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="arr=[3,5,6]">
+<input type="text" ng-model="arr[0]"> <br>
+<input type="text" ng-model="arr[1]">
+
+<!-- 可以使用运算符-->
+<!--ng-bind-->
+<div ng-bind="arr[0] * arr[1]"></div>
+</body>
+</html>
+<!--
+1. 在Angularjs加载完成后会自动启动,首先去找ng-app指令
+2. 找到后认为ng-app里面所有都归Angularjs管
+3. 在子层标签里面所有Angular指令都会生效,例如ng-model
+4. ng-model是生成数据模型,然后挂载在作用域里面
+5. 在作用域里面所有的标签都可以访问这个ng-model
+-->

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请注册</title>
+    <script src="../jquery-3.0.0.js"></script>
+</head>
+<body>
+<p>请输入注册信息</p>
+用户名: <input type="text" id="user">
+密码: <input type="password" id="pass">
+个人介绍: <input type="text" id="geren">
+<button onclick="btn()">注册</button>
+<script src="../jquery-3.0.0.js"></script>
+<script src="allURL.js"></script>
+<script src="hb.js"></script>
+<script>
+    function btn(){
+        var na = document.getElementById("user");
+        var pa = document.getElementById("pass");
+        var ge = document.getElementById("geren");
+        $.ajax({
+            url:registerUrl,
+            type:"post",
+            data:{
+                user:na.value,
+                pass:pa.value,
+                geren:ge.value
+            },
+            success:function (res) {
+                var obj = JSON.parse(res);
+                if(obj.error ==="0"){
+                    setCookie("token",obj.token,1);
+                    window.location.href = mubanURL+"?token="+obj.token;
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

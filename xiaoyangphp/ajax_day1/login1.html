@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+    <input type="text" name="user" id="user">
+    <input type="text" name="pass" id="pass">
+    <input type="button" value="登录" id="login">
+</div>
+
+<script src="ajax.js"></script>
+<script>
+    var user = document.getElementById("user");
+    var pass = document.getElementById("pass");
+    var loginBtn = document.getElementById("login");
+    var box = document.getElementById("box");
+
+//    loginBtn.onclick = function () {
+//        ajaxFn("login.php?user="+user.value+"&pass="+pass.value,function (data) {
+//            console.log(data);
+//            if (data == "登录成功"){
+//
+//                box.innerHTML ="登录成功";
+//            }
+//        })
+//    }
+    loginBtn.onclick = function () {
+        ajaxFn({
+            url:"login.php",
+            data:{
+                user:user.value,
+                pass:pass.value
+            },
+            success:function (data) {
+                console.log(data);
+                if (data == "登录成功"){
+
+                    box.innerHTML ="登录成功";
+                }
+            }
+        })
+    }
+</script>
+
+
+</body>
+</html>

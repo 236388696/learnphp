@@ -1,0 +1,79 @@
+#invite_friend{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("../img/1_bg.png") no-repeat;
+    background-size: 100% 100%;
+}
+#inf_bg{
+    width: 86%;
+    position: absolute;
+    top: 0;
+    left: 1%;
+}
+#inf_jingji{
+    width: 80%;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+}
+#inf_tiaoz{
+    width: 80%;
+    position: absolute;
+    top: 69%;
+    left: 10%;
+}
+#inf_name{
+    width: 12.5%;
+    position: absolute;
+    top: 12.5%;
+    left: 63%;
+    color: #fff;
+    font-size: 1.5em;
+    letter-spacing: 2px;
+}
+#inf_score{
+    width: 100%;
+    position: absolute;
+    top: 37%;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 1.4em;
+    letter-spacing: 2px;
+}
+#inf_score span,#inf_paiming span{
+    color: #E8C83E;
+}
+#inf_paiming{
+    width: 100%;
+    position: absolute;
+    top: 41%;
+    left: 0;
+    text-align: center;
+    color: #fff;
+    font-size: 1.4em;
+    letter-spacing: 2px;
+}
+#in_complete{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+#inc_bg{
+    width: 84.58%;
+    position: absolute;
+    top: 1%;
+    left: 7.86%;
+}
+#inc_btn{
+    width: 80%;
+    position: absolute;
+    top: 59%;
+    left: 10%;
+}

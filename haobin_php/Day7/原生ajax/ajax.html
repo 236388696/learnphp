@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script src="jquery-2.1.4.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+		//1.原生ajax里面get访问
+			var ajaxObj = new XMLHttpRequest();
+			ajaxObj.open("GET","index.php",true);
+			ajaxObj.send();
+			ajaxObj.onreadystatechange = function(){
+				if(ajaxObj.readyState ==4){
+					if(ajaxObj.status ==200){
+						console.log(ajaxObj.responseText);
+					}
+				}
+			}
+			//2.jq ajax get
+			$.ajax({
+				url:"index.php",
+				type:"GET",
+				data:{
+					name:'mingzi',
+					age:12
+				},
+				success:function(reText){
+					console.log(reText);
+				}
+			})
+			//3.原生ajax post
+			var ajaxP = new XMLHttpRequest();
+			ajaxP.open("POST","post.php",true);
+			ajaxP.send("name=NAME&age=18");
+			ajaxP.onreadystatechange = function(){
+				//调用open，调用send，加载中，加载完成
+				if(ajaxP.readyState==4){
+					if(ajaxP.status==200){
+						console.log(ajaxP.responseText);
+					}
+				}
+			}
+			//4.jq ajax post
+			$.ajax({
+				type:"post",
+				url:"post.php",
+				data:{
+					name:"NAME",
+					age:18
+				},
+				success:function(resText){
+					console.log(resText);
+				}
+			})
+		</script>
+	</body>
+</html>

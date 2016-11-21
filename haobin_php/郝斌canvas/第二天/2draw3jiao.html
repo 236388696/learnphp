@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600">你的破浏览器不支持canvas，请更新谷歌浏览器<a href="http://rj.baidu.com/soft/detail/25718.html?ald">谷歌浏览器下载地址</a></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			can.beginPath();
+			can.moveTo(100,100);
+			can.lineTo(20,200);
+			can.lineTo(150,200);
+			can.lineTo(100,100);
+			can.stroke();
+			can.closePath();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="angular.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body >
+
+    <div ng-app="myApp">
+        <my-directive></my-directive>
+        <div my-directive></div>
+        <div class="my-directive"></div>
+    </div>
+
+</body>
+
+<script type="application/javascript">
+    //两个参数:1.作用域的名字  2.[]依赖 外部的库
+    var app = angular.module("myApp",[]);
+
+    //控制器方法
+    //绑定控制器 1.控制器名字 2.控制器方法
+    app.controller("myController",function ($scope) {
+        
+    });
+    app.directive("myDirective",function () {
+       return{
+           /*
+           * E 指令可以作为html元素使用
+           * A 指令可以作为html属性使用
+           * C 指令可以作为css类使用
+           * */
+           restrict:"EAC",
+           replace:false,
+//           template:"<h1><a href='###'>这是一个连接</a></h1>"
+            templateUrl:"./header.html"
+       }
+    })
+
+</script>
+
+</html>
+<!--
+1. 在Angularjs加载完成后会自动启动,首先去找ng-app指令
+2. 找到后认为ng-app里面所有都归Angularjs管
+3. 在子层标签里面所有Angular指令都会生效,例如ng-model
+4. ng-model是生成数据模型,然后挂载在作用域里面
+5. 在作用域里面所有的标签都可以访问这个ng-model
+-->

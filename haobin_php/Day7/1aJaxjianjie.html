@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //AJAX:全称Asynchronous Javascript And XML;
+    //这个技术的引用主要是为了:
+        //1.实现js和PHP之间的交互
+        //2.实现页面的局部刷新
+    //原生AJAX的实现(重点***)
+    //1.创建AJAX对象
+    var ajaxObj = new XMLHttpRequest();//现代浏览器
+//    var guAjaxObj = new ActiveXObject("Microsoft,XMLHTTP");//IE;
+    //2.打开连接
+    //参数:方式,要提交的网址,是否异步
+    ajaxObj.open("GET","3PHPJSON.php",true);
+    //3.发送请求
+    ajaxObj.send();
+    //4.接收状态改变
+    ajaxObj.onreadystatechange = function () {
+        //ajax的准备码
+        //1open被调用
+        //2send被调用
+        //3加载中
+        //4加载完成
+        if(ajaxObj.readyState == 4){
+            //状态码
+            //200完成
+            //404未发现指定文件
+            //502服务器未响应
+            //4**客户端问题
+            //5**服务器问题
+            if(ajaxObj.status == 200){
+                console.log(ajaxObj.responseText);
+            }
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script src="gao.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			var img = new Image();
+			img.src = "img/1.jpg";
+			img.onload = function(){
+				can.drawImage(img,0,0);
+				var imageData = can.getImageData(0,0,400,250);
+				var newImageData = gaussBlur1(imageData,50,10);
+				can.putImageData(newImageData,0,0);
+			}
+			
+			
+			can.closePath();
+		</script>
+	</body>
+</html>

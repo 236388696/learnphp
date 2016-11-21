@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input{
+            margin: 10px;
+        }
+        span{
+            margin:15px;
+            border: 1px solid black;
+            font-size: 16px;
+            background-color: darkgrey;
+        }
+        #divZc{
+            display: block;
+        }
+        #divDl{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<input type="button" id="span1" value="注册">
+<input type="button" id="span2" value="登录">
+<div id="divZc">
+    头像:<input type="file" id="img"><input type="button" id="btn">
+    用户名:<input type="text" id="name"><br>
+    密码:<input type="password" id="pass"><br>
+    年龄:<input type="age" id="age"><br>
+    性别:
+    <input type="radio" value="女" name="type">女
+    <input type="radio" value="男" name="type">男<br>
+    请输入验证码:<input type="text" id="yanZ"><img src="drawYz.php" alt=""><a href=javascript:reImage()>看不清再换一张</a><br>
+    <input type="submit" value="注册" id="inp1">
+</div>
+<div id="divDl">
+    用户名:<input type="text" id="name1"><br>
+    密码:<input type="password" id="pass1"><br>
+    <input type="submit" value="登录" id="inp2">
+</div>
+
+<script>
+    var span1=document.getElementById("span1");
+    var span2=document.getElementById("span2");
+    var div1=document.getElementById("divZc");
+    var div2=document.getElementById("divDl");
+
+    span1.onclick=function () {
+        div1.style.display="block";
+        div2.style.display="none";
+    }
+    span2.onclick=function () {
+        div2.style.display="block";
+        div1.style.display="none";
+    }
+    function reImage() {
+        var im=document.querySelectorAll("img")[0];
+        im.src="drawYz.php";
+    }
+</script>
+<script src="jquery-3.0.0.js"></script>
+<script src="ajaxfileupload.js"></script>
+<script>
+
+$("#inp1").click(function () {
+    $("#btn").click(function () {
+        ajaxFileUpload();
+    })
+    $.ajax({
+        url:"zhuc.php",
+        type:"post",
+        data:{
+
+            name:$("#name").val(),
+            pass:$("#pass").val(),
+            age:$("#age").val(),
+            sex:$("input[name='type']:checked").val(),
+            yanZ:$("#yanZ").val()
+        },
+        success:function (res) {
+            var r = JSON.parse(res);
+            console.log(r.msg);
+        }
+    })
+})
+$("#inp2").click(function () {
+    $.ajax({
+        url:"dengl.php",
+        type:"post",
+        data:{
+            name:$("#name1").val(),
+            pass:$("#pass1").val()
+        },
+        success:function (rese) {
+            var rs = JSON.parse(rese);
+            console.log(rs.msg);
+        }
+    })
+})
+function ajaxFileUpload() {
+    $.ajaxFileUpload({
+        url:'image.php',
+        type:'post',
+        success:function (data,status) {
+            
+        }
+    })
+}    
+    
+
+</script>
+
+</body>
+</html>

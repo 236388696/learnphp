@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas{
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="600" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("mycanvas");
+			var can = myCan.getContext("2d");
+			function yuan(x,y,r,color){
+				this.x = x;
+				this.y = y;
+				this.r = r;
+				this.color = color;
+			}
+			var rect1 = new yuan(100,100,15,"red");
+			var rect2 = new yuan(500,500,15,"blue");
+			var arr = [rect1,rect2];
+			function drawArc(){
+				can.beginPath();
+				can.moveTo(100,500);
+				can.lineTo(arr[0].x,arr[0].y);
+				can.stroke();
+				can.closePath();
+				can.beginPath();
+				can.moveTo(500,100);
+				can.lineTo(arr[1].x,arr[1].y);
+				can.stroke();
+				can.closePath();
+				can.beginPath();
+				can.moveTo(500,100);
+				can.bezierCurveTo(arr[1].x,arr[1].y,arr[0].x,arr[0].y,100,500);
+				can.stroke();
+				can.closePath();
+				can.beginPath();
+				can.moveTo(100,500);
+				can.lineTo(100,100);
+				can.stroke();
+				can.closePath();
+				can.beginPath();
+				can.moveTo(100,500);
+				can.lineTo(500,500);
+				can.stroke();
+				can.closePath();
+				can.beginPath();
+				can.moveTo(100,500);
+				can.lineTo(500,100);
+				can.stroke();
+				can.closePath();
+				var index = -1;
+				for(var i=0;i<arr.length;i++){
+					var rectObj = arr[i];
+					can.beginPath();
+					can.fillStyle = rectObj.color;
+					can.arc(rectObj.x,rectObj.y,rectObj.r,0,Math.PI*2,true);
+					can.fill();
+					can.closePath();
+					if(arguments){
+						if(can.isPointInPath(arguments[0],arguments[1])){
+							index = i;
+						}
+					}
+				}
+				return index;
+			}
+			myCan.onmousedown = function(ev){
+				var index = drawArc(ev.offsetX,ev.offsetY);
+				var rectObj = arr[index];
+				if(index ==-1){
+					return;
+				}
+				var chaX = ev.offsetX-rectObj.x;
+				var chaY = ev.offsetY-rectObj.y;
+				myCan.onmousemove = function(moveEv){
+					can.clearRect(0,0,myCan.width,myCan.height);
+					var newX = moveEv.offsetX-chaX;
+					var newY = moveEv.offsetY-chaY;
+					rectObj.x = newX;
+					rectObj.y = newY;
+					var a0 = arr[0];
+					var a1 = arr[1];
+					can.beginPath();
+					can.moveTo(100,500);
+					can.lineTo(a0.x,a0.y);
+					can.stroke();
+					can.closePath();
+					can.beginPath();
+					can.moveTo(500,100);
+					can.lineTo(a1.x,a1.y);
+					can.stroke();
+					can.closePath();
+					can.beginPath();
+					can.moveTo(500,100);
+					can.bezierCurveTo(a1.x,a1.y,a0.x,a0.y,100,500);
+					can.stroke();
+					can.closePath();
+					drawArc();
+				}
+			}
+			myCan.onmouseup = function(){
+				myCan.onmousemove = "";
+			}
+			drawArc();
+		</script>
+	</body>
+</html>

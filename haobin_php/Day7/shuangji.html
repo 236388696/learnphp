@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<table border="1" cellpadding="0">
+    <tr>
+        <td ondblclick="ShowElement(this)">双击</td>
+        <td ondblclick="ShowElement(this)">双击</td>
+        <td ondblclick="ShowElement(this)">双击</td>
+    </tr>
+    <tr>
+        <td ondblclick="ShowElement(this)">双击</td>
+        <td ondblclick="ShowElement(this)">双击</td>
+        <td ondblclick="ShowElement(this)">双击</td>
+    </tr>
+</table>
+<script type="text/javascript">
+    function ShowElement(element)
+    {
+        var oldhtml = element.innerHTML;
+        var newobj = document.createElement('input');
+        newobj.type = 'text';
+        newobj.value = oldhtml;
+        newobj.onblur = function(){
+            element.innerHTML = this.value ? this.value : oldhtml;
+        }
+        element.innerHTML = "";
+        element.appendChild(newobj);
+        newobj.focus();
+    }
+</script>
+</body>
+</html>

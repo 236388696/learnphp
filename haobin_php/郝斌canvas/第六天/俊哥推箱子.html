@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				box-shadow: 0 0 5px 5px aquamarine;
+				margin-top: 15px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanVas" width="600" height="600"></canvas>
+		<script src="js/checkpeng.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			var img1 = new Image();
+			var img2 = new Image();
+			img1.src = "img/junge.jpg";
+			img2.src = "img/xiangzi.jpg";
+			//图片加载完成时调用
+			img2.onload = function() {
+				can.drawImage(img1, 0, 0);
+				can.drawImage(img2, 100, 100);
+
+				function junge() {
+					this.x = 0;
+					this.y = 0;
+					this.w = 100;
+					this.h = 100;
+					this.speed = 100;
+				}
+				junge.prototype.draw = function() {
+					can.beginPath();
+					can.fillStyle = this.color;
+					can.drawImage(img1, this.x, this.y);
+					can.closePath();
+				}
+
+				function xiangzi() {
+					this.x = 100;
+					this.y = 100;
+					this.w = 100;
+					this.h = 100;
+					this.speed = 100;
+				}
+				xiangzi.prototype.draw = function() {
+					can.beginPath();
+					can.fillStyle = this.color;
+					can.drawImage(img2, this.x, this.y);
+					can.closePath();
+				}
+				var jun = new junge();
+				var xiang = new xiangzi();
+				document.onkeydown = function(ev) {
+					var ev = ev || window.event;
+					switch(ev.keyCode) {
+						//left
+						case 37:
+							jun.x -= jun.speed;
+							if(jun.x < xiang.x + xiang.w && jun.x >= xiang.x && jun.y == xiang.y) {
+								xiang.x -= xiang.speed;
+							}
+							break;
+							//top
+						case 38:
+							jun.y -= jun.speed;
+							if(jun.y < xiang.y + xiang.h && jun.y >= xiang.y && jun.x == xiang.x) {
+								xiang.y -= xiang.speed;
+							}
+							break;
+							//right
+						case 39:
+							jun.x += jun.speed;
+							if(jun.x + jun.w > xiang.x && jun.x < xiang.x + xiang.w && jun.y == xiang.y) {
+								xiang.x += xiang.speed;
+							}
+							break;
+							//bottom
+						case 40:
+							jun.y += jun.speed;
+							if(jun.y + jun.h > xiang.y && jun.y < xiang.y + xiang.h && jun.x == xiang.x) {
+								xiang.y += xiang.speed;
+							}
+							break;
+						default:
+							break;
+					}
+					can.clearRect(0, 0, myCan.width, myCan.height);
+					jun.draw();
+					xiang.draw();
+				}
+			}
+		</script>
+	</body>
+
+</html>

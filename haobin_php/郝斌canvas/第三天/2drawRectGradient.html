@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			can.rect(100,100,300,300);
+			var gra = can.createLinearGradient(100,100,400,400);
+			gra.addColorStop(0,"red");
+			gra.addColorStop(0.5,"yellow");
+			gra.addColorStop(1,"green");
+			can.fillStyle = gra;
+			can.fill();
+			can.closePath();
+		</script>
+	</body>
+</html>

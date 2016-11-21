@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<!--canvas标签不能利用css设置宽高-->
+		<!--canvas是HTML5新出的标签，不支持过低版本的浏览器（IE9一下的不行）-->
+		<!--canvas内部文字，只有在浏览器不支持canvas是才会打印-->
+		<canvas id="myCanVas" width="800" height="600">你的破浏览器不支持canvas，请更新谷歌浏览器<a href="http://rj.baidu.com/soft/detail/25718.html?ald">谷歌浏览器下载地址</a></canvas>
+		<script type="text/javascript">
+			//1.获取canvas标签
+			var canvas = document.getElementById("myCanVas");
+			//2.获取图形上下文（用于保存绘画信息，可以理解为画笔）
+			//注意：canvas是2d绘画引擎，只能绘画2d图形
+			var can = canvas.getContext("2d");
+			//绘制一条线
+			//3.开始路径（把画笔按到画板上）
+			can.beginPath();
+			//把画笔一道起始点
+			can.moveTo(50,50);
+			//设置两一个点
+			can.lineTo(150,150);
+			//4.描边
+			can.stroke();
+			//5.关闭路径（把画笔从画布上抬起来）
+			can.closePath();
+			
+			
+			
+		</script>
+	</body>
+</html>

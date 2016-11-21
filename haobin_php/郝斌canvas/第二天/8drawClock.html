@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			//绘制外边表盘圆形边框
+			function clockBianArc() {
+				can.beginPath();
+				can.arc(200, 200, 150, 0, Math.PI * 2, true);
+				can.lineWidth = 3;
+				can.strokeStyle = "brown";
+				can.stroke();
+
+				can.closePath();
+			}
+
+			function drawKeBig() {
+				can.beginPath();
+				var deg = 0;
+				for(var i = 0; i < 12; i++) {
+					deg += Math.PI * 2 / 12;
+					can.moveTo(200 - 130 * Math.cos(deg), 200 - 130 * Math.sin(deg));
+					can.lineTo(200 - 150 * Math.cos(deg), 200 - 150 * Math.sin(deg));
+					can.lineWidth = 2;
+					can.strokeStyle = "black";
+				}
+				can.stroke();
+				can.closePath();
+			}
+
+			function drawKeSmall() {
+				can.beginPath();
+				var deg = 0;
+				for(var i = 0; i < 60; i++) {
+					deg += Math.PI * 2 / 60;
+					if(i%5==4){
+						continue;
+					}
+					can.moveTo(200 - 140 * Math.cos(deg), 200 - 140 * Math.sin(deg));
+					can.lineTo(200 - 150 * Math.cos(deg), 200 - 150 * Math.sin(deg));
+					can.lineWidth = 1;
+					can.strokeStyle = "#ccc";
+				}
+				can.stroke();
+				can.closePath();
+			}
+			//4.绘制秒针
+			function drawLine() {
+				var da = new Date();
+				var secDeg = da.getSeconds() * Math.PI / 30;
+				can.beginPath();
+				can.lineWidth = 2;
+				can.strokeStyle = "red";
+				can.moveTo(200, 200);
+				//圆的零点在右边，中标零点在上边
+				can.lineTo(200 + 120 * Math.sin(secDeg), 200 - 120 * Math.cos(secDeg));
+				can.stroke();
+				can.closePath();
+			}
+			//5.绘制分针
+			function drawLineMin() {
+				var da = new Date();
+				var secDeg = da.getMinutes() * Math.PI / 30 + da.getSeconds() * Math.PI / 30 / 60;
+				can.beginPath();
+				can.lineWidth = 3;
+				can.strokeStyle = "#bbb";
+				can.moveTo(200, 200);
+				//圆的零点在右边，中标零点在上边
+				can.lineTo(200 + 90 * Math.sin(secDeg), 200 - 90 * Math.cos(secDeg));
+				can.stroke();
+				can.closePath();
+			}
+			//6.绘制时针
+			function drawLineH() {
+				var da = new Date();
+				var secDeg = da.getHours() * Math.PI / 6+da.getMinutes()*Math.PI / 6/60;
+				can.beginPath();
+				can.lineWidth = 5;
+				can.strokeStyle = "black";
+				can.moveTo(200, 200);
+				//圆的零点在右边，中标零点在上边
+				can.lineTo(200 + 70 * Math.sin(secDeg), 200 - 70 * Math.cos(secDeg));
+				can.stroke();
+				can.closePath();
+			}
+			var timer = null;
+			clearInterval(timer);
+			timer = setInterval(function() {
+				//clearRect清除一片指定区域的东西
+				//参数：x，y，范围宽度，范围高度
+				can.clearRect(0, 0, myCan.width, myCan.height);
+				drawLine();
+				clockBianArc();
+				drawKeBig();
+				drawKeSmall();
+				drawLineMin();
+				drawLineH();
+			}, 1000)
+		</script>
+	</body>
+
+</html>

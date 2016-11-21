@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			canvas {
+				box-shadow: 0 0 5px 5px aquamarine;
+				margin-top: 15px;
+			}
+			div{
+				float: left;
+			}
+			.zt{
+				margin-left: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="count">你的得分：0分</div>
+		<div class="zt">暂停</div>
+		<canvas id="myCanVas" width="600" height="600"></canvas>
+		<script src="js/checkpeng.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var div1 = document.getElementById("count");
+			var div2 = document.getElementsByClassName("zt")[0];
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			//变量保存蛇的身体长度
+			var snakelength = 5;
+			var timer = null;
+			var sum = 0;
+			//随机失误位置
+			function rand() {
+				var ran = Math.floor(Math.random() * 20);
+				return ran * 30;
+			}
+			//食物的类
+			function food() {
+				this.x = rand();
+				this.y = rand();
+				this.w = 30;
+				this.h = 30;
+				this.color = "green";
+			}
+			food.prototype.drawFood = function() {
+				can.beginPath();
+				can.fillStyle = this.color;
+				can.fillRect(this.x, this.y, this.w, this.h);
+				can.closePath();
+			}
+
+			function Snake() {
+				this.x = -30;
+				this.y = 30;
+				this.w = 30;
+				this.h = 30;
+				this.color = "gray";
+				this.speed = 30;
+				//方向
+				this.left = false;
+				this.top = false;
+				this.right = true;
+				this.bottom = false;
+				//用于装蛇的每个矩形快的信息，包括头部
+				this.bodys = [];
+			}
+			Snake.prototype.draw = function() {
+				for(var i = 0; i < this.bodys.length; i++) {
+					var myRect = this.bodys[i];
+					can.beginPath();
+					can.fillStyle = this.color;
+					can.fillRect(myRect.x, myRect.y, myRect.w, myRect.h);
+					can.closePath();
+				}
+			}
+			Snake.prototype.move = function() {
+					//根据四个属性的bool值来判断当前蛇应该往哪个方向移动
+					if(this.top) {
+						this.y -= this.speed;
+					} else if(this.right) {
+						this.x += this.speed;
+					} else if(this.left) {
+						this.x -= this.speed;
+					} else if(this.bottom) {
+						this.y += this.speed;
+					}
+				}
+				//用来保存新移动的矩形的信息
+			Snake.prototype.savePosition = function() {
+				//把先移动的这个矩形的位置一集代销信息撞到bodys数组里
+				var posi = {
+					x: this.x,
+					y: this.y,
+					w: this.w,
+					h: this.h
+				}
+				if(this.x > myCan.width || this.y > myCan.height || this.x < 0 || this.y < 0) {
+					alert("Game Over!!");
+					clearInterval(timer);
+				}
+				if(checkPeng(posi, sw)) {
+					snakelength++;
+					sw.x = rand();
+					sw.y = rand();
+					sum++;
+					div1.innerHTML = "你的得分："+sum+"分";
+				}
+				for(var i = 0; i < this.bodys.length; i++) {
+					if(checkPeng(this.bodys[i], sw)) {
+
+						sw.x = rand();
+						sw.y = rand();
+					}
+					if(checkPeng(this.bodys[i], posi)) {
+						alert("Game Over!!");
+						clearInterval(timer);
+					}
+				}
+				if(this.bodys.length >= snakelength) {
+					this.bodys.shift();
+				}
+				this.bodys.push(posi);
+			}
+			var s = new Snake();
+			var sw = new food();
+			timer = setInterval(function() {
+				can.clearRect(0, 0, myCan.width, myCan.height);
+				s.move();
+				s.savePosition();
+				sw.drawFood();
+				s.draw();
+			}, 100)
+			document.onkeydown = function(ev) {
+				var ev = ev || window.event;
+				switch(ev.keyCode) {
+					//left
+					case 37:
+						//当蛇是向右走的时候，s.right属性是true，不能向反方向走
+						if(!s.right) {
+							s.left = true;
+							s.top = false;
+							s.right = false;
+							s.bottom = false;
+						}
+						break;
+						//top
+					case 38:
+						if(!s.bottom) {
+							s.left = false;
+							s.top = true;
+							s.right = false;
+							s.bottom = false;
+						}
+						break;
+						//right
+					case 39:
+						if(!s.left) {
+							s.left = false;
+							s.top = false;
+							s.right = true;
+							s.bottom = false;
+						}
+						break;
+						//bottom
+					case 40:
+						if(!s.top) {
+							s.left = false;
+							s.top = false;
+							s.right = false;
+							s.bottom = true;
+						}
+						break;
+					default:
+						break;
+				}
+			}
+			div2.onclick = function(){
+				alert("点击确定继续");
+			}
+		</script>
+	</body>
+
+</html>

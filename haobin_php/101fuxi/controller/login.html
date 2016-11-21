@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>请登录</title>
+    <script src="../jquery-3.0.0.js"></script>
+</head>
+<body>
+<p>请登录</p>
+用户名: <input type="text" id="user">
+密码: <input type="password" id="pass">
+<button onclick="btn()">登录</button>
+<script src="../jquery-3.0.0.js"></script>
+<script src="allURL.js"></script>
+<script src="hb.js"></script>
+<script>
+    function btn(){
+        var na = document.getElementById("user");
+        var pa = document.getElementById("pass");
+        $.ajax({
+            url:loginURL,
+            type:"post",
+            data:{
+                user:na.value,
+                pass:pa.value,
+            },
+            success:function (res) {
+                var obj = JSON.parse(res);
+                if(obj.error ==="0"){
+                    setCookie("token",obj.token,1);
+                    window.location.href = mubanURL+"?token="+obj.token;
+                }
+            }
+        })
+    }
+</script>
+</body>
+</html>

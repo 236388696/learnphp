@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="yanzheng.php" method="post">
+    <input type="text" placeholder="请输入" name="code">
+    <img src="yanzhengma.php" alt="">
+    <a href="javascript:reloadImage()">看不清?点我</a>
+    <input type="submit" value="提交">
+</form>
+<script>
+    function reloadImage() {
+        var img = document.getElementsByTagName("img")[0];
+        img.src = "yanzhengma.php";
+    }
+</script>
+</body>
+</html>

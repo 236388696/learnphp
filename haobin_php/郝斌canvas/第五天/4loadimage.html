@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			//此方法保证所有图片加载完成之后再做别的
+			function loadimage(imgArr,fn){
+				//接收图片加载完成的数量
+				var imgloadCount = 0;
+				for(var i=0;i<imgArr.length;i++){
+					var img = new Image;
+					img.src = imgArr[i];
+					//图片加载完成
+					img.onload = function(){
+						if(imgloadCount==imgArr.length){
+							fn(imgloadCount/imgArr.length);
+						}
+						else{
+							imgloadCount++;
+							fn(imgloadCount/imgArr.length);
+						}
+					}
+				}
+			}
+			var arr = ["img/p1.png","img/p2.png","img/p3.png","img/p4.png","img/p5.png","img/p6.png"];
+			loadimage(arr,function(a){
+				console.log(a+"%");
+			});
+			function load(imgArr,fn){
+				var count=0;
+				for(var i=0;i<imgArr.length;i++){
+					var img = new Image();
+					img.src = imgArr[i];
+					img.onload = function(){
+						if(count==imgArr.length){
+							fn(count/imgArr.length);
+						}
+						else{
+							count++;
+							fn(count/imgArr.length);
+						}
+					}
+				}
+			}
+			load(arr,function(a){
+				console.log(a);
+			})
+		</script>
+	</body>
+</html>

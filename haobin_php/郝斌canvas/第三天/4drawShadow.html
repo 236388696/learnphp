@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="700"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			can.fillStyle = "red";
+			//阴影颜色
+			can.shadowColor = "yellow";
+			//阴影横向偏移量
+			can.shadowOffsetX = 10;
+			//阴影纵向偏移量
+			can.shadowOffsetY = 10;
+			//阴影模糊度，越大越模糊
+			can.shadowBlur = 5;
+			can.fillRect(50,50,100,100);
+			can.arc(300,100,100,0,Math.PI*2,true);
+			can.fill();
+			can.closePath();
+		</script>
+	</body>
+</html>

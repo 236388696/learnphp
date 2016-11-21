@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			can.rect(100,100,300,300);
+			//刻度范围之外的颜色为边界颜色
+			var gra = can.createLinearGradient(200,200,300,300);
+			gra.addColorStop(0,"red");
+			gra.addColorStop(0.5,"yellow");
+			gra.addColorStop(1,"green");
+			can.fillStyle = gra;
+			can.fill();
+			can.closePath();
+		</script>
+	</body>
+</html>

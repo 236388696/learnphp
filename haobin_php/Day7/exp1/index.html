@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var ajax = new XMLHttpRequest();
+    ajax.open("GET","hello.php",true);
+    ajax.send();
+    ajax.onreadystatechange = function () {
+        if(ajax.readyState==4){
+            if(ajax.status==200){
+                var a = ajax.responseText;
+                //把后天获取到的JSON字符串转化为JSON对象,方便使用
+                var obj = JSON.parse(a);
+                //调用对象那个里的某个值
+                //如果嵌套过深,请自己往里扒
+                var arr = obj.arr;
+                var na = arr.name;
+                console.log(na);
+            }
+        }
+    }
+</script>
+</body>
+</html>

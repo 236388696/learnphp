@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			can.beginPath();
+			can.moveTo(50,50);
+			can.lineTo(50,250);
+			can.lineTo(350,250);
+			can.lineTo(350,50);
+			//绘制矩形，四个参数 x，y，w，h，左上角坐标
+//			can.strokeRect(50,50,300,200);
+			//closePath不光结束绘制，还会把最后一个点连接到起始点
+			can.closePath();
+			can.stroke();
+			
+		</script>
+	</body>
+</html>

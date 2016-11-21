@@ -1,0 +1,189 @@
+
+.game_deng{
+	width: 19.7222%;
+	/*height: 45.4166%;*/
+	position: absolute;
+	left: 43%;
+	top: 15.82%;
+}
+.ready img{
+	position: absolute;
+	left: 33.3888%;
+	top: 42.173913%;
+	width: 33.8888%;
+}
+.game_clock{
+	width: 40.1111%;
+	position: absolute;
+	top:10px;
+	left:30px ;
+}
+.game_time{
+	color: white;
+	font-size: 18px;
+	position: absolute;
+	top:7.5%;
+	left: 25%;
+}
+.game_left{
+	width: 20.5555%;
+	position: absolute;
+	top: 78.260869%;
+	left: 22.2222%;
+}
+.game_right{
+	width: 20.5555%;
+	position: absolute;
+	top: 78.260869%;
+	right: 18.2222%;
+}
+.speedUp{
+	width: 17.36%;
+	position: absolute;
+	top: 74.782608%;
+	right:2px;
+}
+#fail{
+	position: absolute;
+	top: 0;
+	left: 0;
+	/*z-index: 3;*/
+	background: url(../img/5_bg.png);
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	display: none;
+	color: white;
+}
+.fail_agin{
+	position: absolute;
+	top:62.739130%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 85%;
+}
+.fail_paihang{
+	position: absolute;
+	top:70.739130%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 85%;
+}
+.fail_go{
+	position: absolute;
+	left: 29%;
+	top: 34%;
+}
+.fail_win{
+	position: absolute;
+	left: 33%;
+	top: 37%;
+}
+#success{
+	position: absolute;
+
+	/*z-index: 3;*/
+	background: url(../img/5_bg.jpg);
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	display: none;
+	color: white;
+}
+.success_invite{
+	position: absolute;
+	top:64.739130%;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	width: 85%;
+}
+#bangdan{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.75);
+	display: none;
+}
+#bd_bg{
+	width: 82%;
+	height: 83.48%;
+	background: url("../img/7_paihangbang.png") no-repeat;
+	background-size: 100% 100%;
+	position: absolute;
+	top: 3%;
+	left: 9%;
+}
+#bd_cha{
+	width: 11.66%;
+	position: absolute;
+	top: 16%;
+	left: 91%;
+}
+#bd_ul{
+	width: 90%;
+	height: 60%;
+	position: absolute;
+	top: 37.5%;
+	left: 5%;
+}
+#bd_ul li{
+	width: 100%;
+	height: 7.2%;
+	padding-top: 1%;
+	margin: 1% 0;
+	border-bottom: 1px solid #fff;
+	color: #fff;
+	overflow: hidden;
+	text-align: center;
+	font-size: 1em;
+}
+#bd_ul li:nth-child(1){
+	color: #E8C83E;
+}
+.bd_mingci{
+	width: 20%;
+	height: 100%;
+	float: left;
+}
+.bd_name{
+	width: 50%;
+	height: 100%;
+	float: left;
+}
+.bd_score{
+	width: 30%;
+	height: 100%;
+	float: left;
+}
+#invite{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+}
+.invite_cartoon{
+	width: 75%;
+	position: absolute;
+	left: 13.88888%;
+	top: 5%;
+	z-index: 3;
+
+}
+.hezi{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: black;
+	opacity: 0.75;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	display: none;
+}

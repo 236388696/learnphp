@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="700"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			function drawRect(x,y){
+				can.beginPath();
+				can.fillStyle = "red";
+				//阴影颜色
+				can.shadowColor = "greenyellow";
+				//阴影横向偏移量
+				can.shadowOffsetX = 10;
+				//阴影纵向偏移量
+				can.shadowOffsetY = 10;
+				//阴影模糊度，越大越模糊
+				can.shadowBlur = 5;
+				can.fillRect(x,y,100,100);
+				can.closePath();
+			}
+			drawRect(50,50);
+			//存储can的状态
+			can.save();
+			
+			//1.translate 不只是移动，还改变了0，0坐标的位置
+			can.translate(200,200);
+			//回复存储状态
+			can.restore();
+			drawRect(50,50);
+			//2.rotate 旋转(以原点进行旋转)
+			can.rotate(Math.PI/6);
+			drawRect(150,150);
+			
+		</script>
+	</body>
+</html>

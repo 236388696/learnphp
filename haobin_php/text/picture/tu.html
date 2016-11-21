@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="file" name="png" id="pn">
+<button onclick="uploadFile()">d</button>
+<script src="../../../../../../Users/dllo/Downloads/jquery-3.0.0.js"></script>
+<script>
+    var xhr;
+    function createXMLHttpRequest() {
+        if (window.ActiveXObject) {
+            xhr = new ActiveXObject("Microsoft.XMLHTTP");
+        } else if (window.XMLHttpRequest) {
+            xhr = new XMLHttpRequest();
+        }
+    }
+    function uploadFile(){
+        var fileObj = document.getElementById("pn").files[0];
+        console.log(fileObj);
+        var FileController = 'loadImage.php';
+        var form = new FormData();
+        form.append("myfile", fileObj);
+        createXMLHttpRequest();
+        xhr.onreadystatechange = handleStateChange;
+        xhr.open("post", FileController, true);
+        xhr.send(form);
+    }
+    function handleStateChange() {
+        if (xhr.readyState == 4) {
+            if (xhr.status == 200 || xhr.status == 0) {
+                console.log(xhr.responseText);
+
+            }
+        }
+    }
+</script>
+</body>
+</html>

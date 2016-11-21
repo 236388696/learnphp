@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="angular.min.js"></script>
+</head>
+<!--
+ 1. 在Angularjs加载完成后会自动启动,首先去找ng-app指令
+ 2. 找到后认为ng-app里所有都归Angularjs管
+ 3. 在子层标签里面所有Angular指令都会生效,例如ng-model
+ 4. ng-model是用于生成数据模型,然后挂载在作用域里面
+ 5. 在作用域里面所有的标签都可以访问这个ng-model
+ -->
+<body>
+<!--
+    ng-include
+-->
+<div ng-app="myApp" ng-controller="myController">
+    <input type="text" ng-model="name">
+    <button ng-click="sayHello()">打招呼</button>
+    <div>
+        {{sayHello()}}
+    </div>
+</div>
+<script>
+    <!-- 参数1: 作用域名字  参数2: 依赖  外部的一些库-->
+    var app = angular.module("myApp",[]);
+
+    //    控制器方法
+    function myControllerCb($scope){
+//        定义了一个叫name的model
+        $scope.name = "马强";
+//        $scope.msg = "";
+        $scope.sayHello = function () {
+            return "hello" + $scope.name;
+        }
+//        $scope.person = {
+//            name:"zhangsan"
+//        }
+    }
+
+    //    绑定控制器 参数1: 控制器的名字 参数2:控制器方法
+    app.controller("myController",myControllerCb);
+</script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#myCanVas{
+				background-color: #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="600" height="400"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			var speedx = 0;
+			var speedy = 0;
+			var x=50;
+			var y=100;
+			var timer1=null;
+			var timer2=null;
+			var timer3=null;
+			var timer4=null;
+			function youxia(){
+				timer1 = setInterval(function(){
+					can.clearRect(0,0,myCan.width, myCan.height);
+					can.beginPath();
+					speedx+=1;
+					speedy+=1;
+					can.arc(x+speedx,y+speedy,40,0,Math.PI*2,true);
+					if(x+speedx>=myCan.width-40&&y+speedy<myCan.height-40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						zuoxia();
+					}
+					if(x+speedx<myCan.width-40&&y+speedy>=myCan.height-40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						youshang();
+					}
+					can.fillStyle = "red";
+					can.fill();
+					can.closePath();
+				},10)
+			}
+			youxia();
+			function zuoxia(){
+				timer2 = setInterval(function(){
+					can.clearRect(0,0,myCan.width, myCan.height);
+					can.beginPath();
+					speedx-=1;
+					speedy+=1;
+					can.arc(x+speedx,y+speedy,40,0,Math.PI*2,true);
+					if(x+speedx<=40&&y+speedy<myCan.height-40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						youxia()
+					}
+					if(x+speedx>40&&y+speedy>=myCan.height-40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						zuoshang()
+					}
+					can.fillStyle = "red";
+					can.fill();
+					can.closePath();
+				},10)
+			}
+			function youshang(){
+				timer3 = setInterval(function(){
+					can.clearRect(0,0,myCan.width, myCan.height);
+					can.beginPath();
+					speedx+=1;
+					speedy-=1;
+					can.arc(x+speedx,y+speedy,40,0,Math.PI*2,true);
+					if(x+speedx<myCan.width-40&&y+speedy<=40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						youxia()
+					}
+					if(x+speedx>=myCan.width-40&&y+speedy>40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						zuoshang()
+					}
+					can.fillStyle = "red";
+					can.fill();
+					can.closePath();
+				},10)
+			}
+			function zuoshang(){
+				timer4 = setInterval(function(){
+					can.clearRect(0,0,myCan.width, myCan.height);
+					can.beginPath();
+					speedx-=1;
+					speedy-=1;
+					can.arc(x+speedx,y+speedy,40,0,Math.PI*2,true);
+					if(x+speedx<40&&y+speedy>=40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						youshang()
+					}
+					if(x+speedx>40&&y+speedy<=40){
+						clearInterval(timer1);
+						clearInterval(timer2);
+						clearInterval(timer3);
+						clearInterval(timer4);
+						zuoxia()
+					}
+					can.fillStyle = "red";
+					can.fill();
+					can.closePath();
+				},10)
+			}
+		</script>
+	</body>
+</html>

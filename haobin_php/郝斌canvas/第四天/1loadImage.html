@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			var img = new Image();
+			img.src = "img/2.jpg";
+			//图片加载完成时调用
+			img.onload = function(){
+				//1参数：图片对象，起始坐标x，y
+//				can.drawImage(img,0,0);
+				//2参数：图片对象，起始坐标x，y,图片宽高
+//				can.drawImage(img,0,0,100,100);
+				//3参数：图片对象，截取起始坐标，截取宽高，显示坐标，显示宽高
+				can.drawImage(img,740,50,200,320,200,200,180,300);
+			}
+			
+			can.closePath();
+		</script>
+	</body>
+</html>

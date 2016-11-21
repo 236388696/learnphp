@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #result{
+            border: 1px solid darkblue;
+            display: none;
+        }
+        ul li{
+            list-style: none;
+            border: 1px solid darkblue;
+            width: 300px;
+        }
+        .active{
+            background-color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+<input type="text" id="text">
+<div id="result">
+    <ul></ul>
+</div>
+<script src="jquery-2.1.3.min.js"></script>
+<script>
+    var currentIndex = -1;
+    $("#text").on("keyup",function (event) {
+        switch (event.keyCode){
+            case 38:
+                currentIndex--;
+                if (currentIndex < 0){
+                    currentIndex = $("li").length-1;
+                }
+                $("li").removeClass("active");
+                $("li").eq(currentIndex).addClass("active");
+                break;
+            case 40:
+                currentIndex++;
+                    if (currentIndex>$("li").length-1){
+                        currentIndex = 0;
+                    }
+                $("li").removeClass("active");
+                $("li").eq(currentIndex).addClass("active");
+
+                break;
+            default:
+                var script = $("<script/>");
+                script.attr("src","http://nssug.baidu.com/?cb=success&ie=utf-8&wd="+$(this).val()+"&prod=image&t=0.6224439386075737&_=1471483267837");
+                $("head").append(script);
+                //script标签的生命周期只有一次,加载之后就可以删除了
+                script.remove();
+                break;
+        }
+
+    });
+
+    $(document).on("mousemove","li",function (event) {
+        var target = $(event.target);
+        $(".active").removeClass("active");
+        target.addClass("active");
+        currentIndex = target.index();
+    })
+    
+    
+    function success(data) {
+//        console.log(data);
+        $("ul").empty();
+        if (data.s.length>0){
+            $("#result").show();
+
+            for (var i = 0;i<data.s.length;i++){
+                var liObj = $("<li></li>");
+                liObj.text(data.s[i]);
+                $("ul").append(liObj);
+             }
+        }else{
+            $("#result").hide();
+        }
+
+
+    }
+    
+
+
+
+</script>
+</body>
+</html>

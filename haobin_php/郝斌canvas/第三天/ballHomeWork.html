@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			html {
+				overflow: hidden;
+			}
+		</style>
+	</head>
+
+	<body>
+		<canvas id="myCanVas" width="" height=""></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			//1.设置canvas标签宽高100%
+			myCan.width = document.documentElement.clientWidth;
+			myCan.height = document.documentElement.clientHeight;
+			//取随机数方法
+			function rand(min, max) {
+				return Math.floor(Math.random() * (max - min + 1) + min);
+			}
+
+			//2.声明一个球的类
+			function Qiu() {
+				this.r = rand(10, 30);
+				this.x = rand(this.r, myCan.width - this.r);
+				this.y = rand(this.r, myCan.height - this.r);
+				//字符串拼接"rgba("  +   +  ")"
+				//tofixd（2）取小数点后两位
+				this.color = "rgba(" + rand(0, 255) + "," + rand(0, 255) + "," + rand(0, 255) + "," + Math.random().toFixed(2) + ")";
+				this.speedX = rand(1, 6);
+				this.speedY = rand(1, 6);
+				//因为速度上来可能是正的或者负的（取1，2模拟50%的概率）
+				this.speedX = rand(1, 2) == 1 ? -this.speedX : this.speedX;
+				this.speedY = rand(1, 2) == 1 ? -this.speedY : this.speedY;
+			}
+			Qiu.prototype.draw = function() {
+				can.beginPath();
+				can.arc(this.x, this.y, this.r, 0, Math.PI * 2, true);
+				can.fillStyle = this.color;
+				can.fill();
+				can.closePath();
+			}
+			Qiu.prototype.move = function() {
+				this.x += this.speedX;
+				this.y += this.speedY;
+				if(this.x <= this.r || this.x >= myCan.width - this.r) {
+					this.speedX = -this.speedX;
+				}
+				if(this.y <= this.r || this.y >= myCan.height - this.r) {
+					this.speedY = -this.speedY;
+				}
+			}
+
+			//3.创建多个球
+			function createManyQiu() {
+				//声明一个数组，放球
+				var arr = [];
+				var num = 20;
+				//for循环创建球
+				for(var i = 0; i < num; i++) {
+					var q = new Qiu();
+					arr.push(q);
+				}
+				return arr;
+			}
+			//接受创建的球对象的数组
+			function begin() {
+				var qiuArr = createManyQiu();
+				//4.定义计时器
+				var timer = setInterval(function() {
+					can.clearRect(0, 0, myCan.width, myCan.height);
+					for(var i = 0; i < qiuArr.length; i++) {
+						var q = qiuArr[i];
+						q.draw();
+						q.move();
+					}
+				}, 10)
+			}
+			begin();
+		</script>
+	</body>
+
+</html>

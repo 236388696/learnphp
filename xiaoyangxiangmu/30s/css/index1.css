@@ -1,0 +1,128 @@
+
+html,body{
+	width: 100%;
+	height: 100%;
+}
+#wrap1{
+	width: 100%;
+	height: 100%;
+	background: url(../img/1_bg.png);
+	background-size: 100% 100%;
+	position: relative;
+}
+.wrap_logo{
+	width: 34.44444%;
+	position: absolute;
+	top: 2.173%;
+	left: 6.388888%;
+	opacity: 1;
+	-webkit-animation: logo 1s 1.2s linear;
+	-o-animation: logo 1s 1.2s linear;
+	animation: logo 1s 1.2ss linear;
+}
+@-webkit-keyframes logo{
+	from{
+		opacity: 0;
+	}
+	to{opacity: 1;
+	}
+}
+.wrap_saiche{
+	width: 95.833333%;
+	position: absolute;
+	top: 7.82608%;
+	left: 4.851%;
+	-webkit-animation: saiche 0.5s linear;
+	-o-animation: saiche 0.5s linear;
+	animation: saiche 0.5s linear;
+}
+@-webkit-keyframes saiche{
+	from{
+		transform: translate(300px,30px);
+	}
+	to{
+		transform: translate(0,0);
+	}
+}
+.wrap_win{
+	width: 51.38888%;
+	position: absolute;
+	left: 37.5%;
+	top: 26.8260%;
+}
+.wrap_challenge{
+	width: 61.11111%;
+	position: absolute;
+	left: 26.111%;
+	top: 33.956%;
+	-webkit-animation:challenge 0.5s 0.5s linear;
+	-o-animation: challenge 0.5s 0.5s linear;
+	animation:challenge 0.5s 0.5s linear;
+}
+@-webkit-keyframes challenge{
+	from{
+		transform: translate(-200px,-30px);
+	}
+	to{}
+}
+.wrap_go{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 74.16666%;
+	margin: 0  auto;
+	top: 70.25%;
+}
+.wrap_rule{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width: 17.91666%;
+	margin: 0  auto;
+	top: 78.25%;
+}
+
+#wrap2{
+	width: 100%;
+	height: 100%;
+	background: url(../img/3_bg.png);
+	background-size: 100% 100%;
+	display: none;
+	
+}
+.wrap_begin{
+	position: absolute;
+	left: 0;
+	right: 0;
+	width:74.16666%;
+	margin: 0  auto;
+	top: 52.173%;
+}
+.wrap_info{
+	width: 88.88888%;
+	position: absolute;
+	top: 7.826%;
+	left: 5.5%;
+	z-index: 3;
+	display: none;
+}
+.wrap_cha{
+	width: 11.805555%;
+	position: absolute;
+	top: 21%;
+	left: 86%;
+	z-index: 3;
+	display: none;
+	
+}
+.hezi{
+	background-color: black;
+	opacity: 0.7;
+	position:absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	display: none;
+}

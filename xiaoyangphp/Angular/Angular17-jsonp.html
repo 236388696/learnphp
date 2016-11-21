@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="angular.min.js"></script>
+    <script type="application/javascript" src="angular-sanitize.js"></script>
+    <style>
+
+    </style>
+</head>
+<body >
+
+    <div ng-app="myApp" ng-controller="myController">
+        <!--{{content}}-->
+        <input type="text" ng-change="changeFn()" ng-model="wd">
+        <ul>
+            <li ng-repeat="item in content.s">{{item}}</li>
+        </ul>
+    </div>
+
+</body>
+
+<script type="application/javascript">
+    //两个参数:1.作用域的名字  2.[]依赖 外部的库  依赖ngSanitize
+    var app = angular.module("myApp",["ngSanitize"]);
+    //控制器方法
+    //绑定控制器 1.控制器名字 2.控制器方法
+    app.controller("myController",function ($scope,$http) {
+        $scope.wd = "";
+        $scope.changeFn = function () {
+            $http.jsonp("https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd= "+$scope.wd+"&cb=JSON_CALLBACK").success(function (res) {
+                $scope.content = res;
+            });
+        }
+
+
+
+    })
+
+</script>
+
+</html>
+<!--
+1. 在Angularjs加载完成后会自动启动,首先去找ng-app指令
+2. 找到后认为ng-app里面所有都归Angularjs管
+3. 在子层标签里面所有Angular指令都会生效,例如ng-model
+4. ng-model是生成数据模型,然后挂载在作用域里面
+5. 在作用域里面所有的标签都可以访问这个ng-model
+-->

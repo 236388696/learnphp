@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - app_dingjz@w.rdc.sae.sina.com.cn" uuid="e6afc01d-b5da-4ca7-a95b-73629436ff56">
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+      <user-name>0jx55oz114</user-name>
+    </data-source>
+  </component>
+</project>

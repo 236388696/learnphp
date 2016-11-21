@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			can.beginPath();
+			can.strokeStyle = "blue";
+//			can.fillStyle = "green";
+//			can.strokeRect(49,49,300,202);
+//			can.fillRect(50,50,300,200);
+//			can.strokeRect(69,69,300,202);
+//			can.fillStyle = "yellow";
+//			can.fillRect(70,70,300,200);
+//			can.strokeRect(89,89,302,202);
+//			can.fillStyle = "skyblue";
+//			can.fillRect(90,90,300,200);
+//			can.strokeRect(109,109,302,202);
+//			can.fillStyle = "red";
+//			can.fillRect(110,110,300,200);
+			can.closePath();
+			var arr = ["green","yellow","skyblue","red"]
+			for(var i=0;i<arr.length;i++){
+				can.strokeRect(50+20*i,50+20*i,300,200);
+				can.fillStyle = arr[i];
+				can.fillRect(50+20*i,50+20*i,300,200);
+			}
+		</script>
+	</body>
+</html>

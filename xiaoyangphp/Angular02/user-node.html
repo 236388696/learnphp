@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/angular.min.js" type="application/javascript"></script>
+</head>
+<body ng-app="myApp">
+    <div class="container" ng-controller="myController">
+        <div class="page-header">
+            <h1>User</h1>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>编辑</th>
+                    <th>姓</th>
+                    <th>名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="user in users">
+                    <td>
+                        <button class="btn btn-default" ng-click="edit($index)"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
+                    </td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{user.lastName}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr>
+        <button class="btn btn-success" ng-click="createUser()"><span class="glyphicon glyphicon-user"></span>创建新用户</button>
+        <hr>
+        <h2 ng-show="createBol">创建新用户</h2>
+        <h2 ng-hide="createBol">编辑用户</h2>
+        <form action=""  class="form-horizontal">
+            <div class="form-group">
+                <lable class="control-label col-sm-1">姓</lable>
+                <div class="col-sm-11" >
+                    <input type="text" class="form-control" ng-model="firstName" ng-disabled="isEdit">
+                </div>
+            </div>
+            <div class="form-group">
+                <lable class="control-label col-sm-1">名</lable>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control"  ng-model="lastName" ng-disabled="isEdit">
+                </div>
+            </div>
+            <div class="form-group">
+                <lable class="control-label col-sm-1">密码</lable>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" ng-model="passw1">
+                </div>
+            </div>
+            <div class="form-group">
+                <lable class="control-label col-sm-1">重复密码</lable>
+                <div class="col-sm-11">
+                    <input type="text" class="form-control" ng-model="passw2">
+                </div>
+            </div>
+        </form>
+        <hr>
+        <button class="btn btn-success"ng-click="userSave()" ng-disabled="isSave()"><span class="glyphicon glyphicon-floppy-saved" ></span>保存</button>
+        
+    </div>
+<script src="js/angular.min.js"></script>
+<script src="js/md5-min.js"></script>
+</body>
+
+<script type="application/javascript">
+//    var users = [{firstName:"张",lastName:"三",password:"131"},{firstName:"李",lastName:"四",password:"131"},{firstName:"王",lastName:"五",password:"131"}];
+
+    var app = angular.module("myApp",[]);
+    app.controller("myController",function ($scope,$http) {
+        $scope.users = [];
+
+        $http.get("http://127.0.0.1:8080/users?act=all").success(function (data) {
+           if (data.err == 1){
+               alert("获取错误")
+           }
+               $scope.users = data;
+        });
+
+        $scope.createBol = true;//默认是创建
+        $scope.isEdit = false;
+        function resetFn() {
+            $scope.firstName = "";
+            $scope.lastName = "";
+            $scope.passw1= "";
+            $scope.passw2= "";
+            $scope.isEdit = false;
+            $scope.createBol = true;
+        }
+        var thisIndex = 0;
+        var thisUser = null;
+        $scope.edit = function (index) {
+            thisIndex = index;
+            console.log(index);
+            thisUser = $scope.users[index];
+            $scope.createBol = false;
+            $scope.isEdit = true;
+            $scope.firstName = $scope.users[index].firstName;
+            $scope.lastName = $scope.users[index].lastName;
+
+        };
+        $scope.createUser = function () {
+            $scope.createBol = true;
+            resetFn();
+        };
+        //保存方法
+        $scope.userSave = function () {
+            //true创建
+            if ($scope.createBol){
+                $http.get("http://127.0.0.1:8080/users",{
+                    params:{
+                        act:"add",
+                        firstName:$scope.firstName,
+                        lastName:$scope.lastName,
+                        password:hex_md5($scope.passw1) 
+                    }
+                }).success(function (data) {
+                    if (data.err == 0){
+                        $scope.users.push({
+                            firstName:$scope.firstName,
+                            lastName:$scope.lastName,
+                            password:$scope.passw1
+                        });
+                        resetFn();
+                    }
+                })
+            }
+
+            else{
+                $http.get("http://127.0.0.1:8080/users",{
+                    params:{
+                        act:"update",
+                        firstName:$scope.firstName,
+                        lastName:$scope.lastName,
+                        password:hex_md5($scope.passw1)
+                    }
+                }).success(function (data) {
+                    if (data.err == 0){
+                        $scope.users[thisIndex].password = $scope.passw1;
+                        resetFn();
+                    }
+                })
+                //编辑 修改密码
+
+                console.log($scope.users);
+                resetFn()
+            }
+        };
+        $scope.isSave = function () {
+            if ($scope.createBol){
+                //新创建的
+                return  !($scope.firstName && $scope.lastName && $scope.passw1 && $scope.passw2 && $scope.passw1 == $scope.passw2);
+            }else{
+                console.log($scope.passw1);
+                //编辑
+                return !(thisUser.password != $scope.passw1 && $scope.passw1 == $scope.passw2 && $scope.passw1);
+            }
+        }
+    });
+</script>
+
+</html>

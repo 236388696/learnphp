@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<video autoplay="autoplay" src="img/videoviewdemo.mp4" id="video">sb浏览器</video>
+		<canvas id="myCanVas" width="800" height="600">啥浏览器啊</canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			var video = document.getElementById("video");
+			video.oncanplay = function(){
+				var timer = setInterval(function(){
+					can.drawImage(video,0,0);
+					a();
+				},1)
+			}
+			function a(){
+				var imageData = can.getImageData(0,0,480,360);
+				var ptxArr = imageData.data;
+				for(var i=0;i<ptxArr.length;i+=4){
+					var r = ptxArr[i];
+					var g = ptxArr[i+1];
+					var b = ptxArr[i+2];
+					ptxArr[i] = (r+g+b)/3;
+					ptxArr[i+1] = (r+g+b)/3;
+					ptxArr[i+2] = (r+g+b)/3;
+				}
+				//处理图片上的信息
+				//参数：img对象，图像起始位置x，y，处理图像坐标，处理图像宽高
+				can.putImageData(imageData,0,0,240,0,240,360);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-3.0.0.js"></script>
+<script>
+    //1.AJAX基于XMLHTTPRequest()默认不支持跨域请求(跨域:域名,端口号不一致)
+    //跨域:此文件和url访问的文件不在同一个服务器,或者端口号不同,则是跨域
+    $.ajax({
+        url:"http://www.baidu.com/s",
+        type:"get",
+        data:{
+            wd:"张乘荣"
+        },
+        success:function (res) {
+            console.log(res);
+        }
+    })
+</script>
+</body>
+</html>

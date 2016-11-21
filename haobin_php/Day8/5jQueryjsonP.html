@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-3.0.0.js"></script>
+<script>
+    function ccc(res) {
+        console.log(res);
+    }
+    $.ajax({
+        url:"https://suggest.taobao.com/sug?code=utf-8&_ksTS=1471489397304_1051&k=1&area=c2c&bucketid=14",
+        type:"get",
+        dataType:"jsonp",
+        data:{
+            q:"张乘荣"
+        },
+        success:function (res) {
+            console.log(res);
+        }
+    })
+</script>
+</body>
+</html>

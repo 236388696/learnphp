@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX封装</title>
+</head>
+<body>
+<script>
+    var ajaxObj = {
+        type: "get",
+        url: "4feng.php",
+        data: {
+            name: "王俊",
+            age: 18
+        },
+        success: function(repesonText){
+            console.log(repesonText);
+        }
+    }
+
+    ajaxNetWork(ajaxObj.type, ajaxObj.url, ajaxObj.data, ajaxObj.success);
+
+
+    // POST区别GET 请求参数不能再网址后面直接拼接
+    // 用来处理url以及传入的参数
+    // par为传入的参数对象(xx:xx, xx:xx)
+    function addPath(type, url, par) {
+        var str = "";
+        // 处理对象, 把对象形式, 转为xx=xx形式, 都放在数组里
+        var arr = [];
+        for (var prop in par) {
+            arr.push(prop + "=" + par[prop]);
+        }
+        // 把数组里的所有内容通过&符号拼接, 然后返回一个字符串
+        str = arr.join("&");
+
+        if (type.toLowerCase() == "get") {
+            return url + "?" + str;
+        }
+        else if (type.toLowerCase() == "post") {
+            return str;
+        }
+    }
+
+    function ajaxNetWork(type, url, par, fn){
+        var ajaxObj;
+        if (window.XMLHttpRequest){
+            ajaxObj = new XMLHttpRequest();
+        } else {
+            ajaxObj = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        if (type.toLowerCase() == "get")
+        {
+            var allURL = addPath(type, url, par);
+            ajaxObj.open(type, allURL, true);
+            ajaxObj.send();
+        } else if (type.toLowerCase() == "post"){
+            ajaxObj.open(type, url, true);
+            ajaxObj.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            // send() 后面填写的是发送的xx=xx&xx=xx的body体
+            // 不要拼接在网址?后面, 则是单独在send里发送
+            ajaxObj.send(addPath(type, url, par));
+        }
+        ajaxObj.onreadystatechange = function(){
+            if (ajaxObj.readyState == 4){
+                if (ajaxObj.status == 200){
+                    fn(ajaxObj.responseText);
+                }
+            }
+        }
+    }
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#myCanVas{
+				background-color: #eee;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="600" height="400"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			var speedx = 0;
+			var speedy = 0;
+			var x=50;
+			var y=50;
+//			function you(){
+//				var timer = setInterval(function(){
+//					can.clearRect(0,0,myCan.width, myCan.height);
+//					can.beginPath();
+//					speedx+=1;
+//					can.arc(x+speedx,y,40,0,Math.PI*2,true);
+//					if(x+speedx>=myCan.width-40){
+//						clearInterval(timer);
+//						zuo();
+//					}
+//					can.fillStyle = "red";
+//					can.fill();
+//					can.closePath();
+//				},10)
+//			}
+//			you();
+//			function zuo(){
+//				var timer = setInterval(function(){
+//					can.clearRect(0,0,myCan.width, myCan.height);
+//					can.beginPath();
+//					speedx-=1;
+//					can.arc(x+speedx,y,40,0,Math.PI*2,true);
+//					if(x+speedx<=40){
+//						clearInterval(timer);
+//						you();
+//					}
+//					can.fillStyle = "red";
+//					can.fill();
+//					can.closePath();
+//				},10)
+//			}
+			function xia(){
+				var timer = setInterval(function(){
+					can.clearRect(0,0,myCan.width, myCan.height);
+					can.beginPath();
+					speedy+=1;
+					can.arc(x,y+speedy,40,0,Math.PI*2,true);
+					if(y+speedy>=myCan.height-40){
+						clearInterval(timer);
+						shang();
+					}
+					can.fillStyle = "red";
+					can.fill();
+					can.closePath();
+				},10)
+			}
+			xia();
+			function shang(){
+				var timer = setInterval(function(){
+					can.clearRect(0,0,myCan.width, myCan.height);
+					can.beginPath();
+					speedy-=1;
+					can.arc(x,y+speedy,40,0,Math.PI*2,true);
+					if(y+speedy<=40){
+						clearInterval(timer);
+						xia();
+					}
+					can.fillStyle = "red";
+					can.fill();
+					can.closePath();
+				},10)
+			}
+		</script>
+	</body>
+</html>

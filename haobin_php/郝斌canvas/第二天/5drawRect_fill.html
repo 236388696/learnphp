@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var canvas = document.getElementById("myCanVas");
+			var can = canvas.getContext("2d");
+			can.beginPath();
+			can.strokeStyle = "red";
+			can.fillStyle = "green";
+			//先描边，再填充
+			can.strokeRect(49,49,302,202);
+			can.fillRect(50,50,300,200);
+			//描边用stroke 填充用fill
+			can.closePath();
+			
+		</script>
+	</body>
+</html>

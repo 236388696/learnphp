@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<canvas id="myCanVas" width="800" height="600"></canvas>
+		<script type="text/javascript">
+			var myCan = document.getElementById("myCanVas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			can.fillStyle = "blue";
+			can.fillRect(0,0,300,200);
+			can.closePath();
+			//如果想让效果生效,要放在两个元素中间
+			can.globalCompositeOperation = "source-out";
+			can.beginPath();
+			can.fillStyle = "yellow";
+			can.arc(300,200,80,0,Math.PI*2,true);
+			can.fill();
+			can.closePath();
+		</script>
+	</body>
+</html>

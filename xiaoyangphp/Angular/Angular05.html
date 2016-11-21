@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="application/javascript" src="angular.min.js"></script>
+</head>
+<body ng-app="" ng-init="click=false">
+    <!--
+        ng-click:定义一个Angular里的单击事件
+    -->
+<button ng-click="click = !click">隐藏/显示</button>
+<div ng-show="click">
+    <!--ng-show 用于显示或隐藏标签视图-->
+    这是一块内容
+</div>
+</body>
+</html>
+<!--
+1. 在Angularjs加载完成后会自动启动,首先去找ng-app指令
+2. 找到后认为ng-app里面所有都归Angularjs管
+3. 在子层标签里面所有Angular指令都会生效,例如ng-model
+4. ng-model是生成数据模型,然后挂载在作用域里面
+5. 在作用域里面所有的标签都可以访问这个ng-model
+-->

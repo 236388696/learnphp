@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<canvas id="mycanvas" width="800" height="600"></canvas>
+		<script src="js/1椭圆.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			var myCan = document.getElementById("mycanvas");
+			var can = myCan.getContext("2d");
+			can.beginPath();
+			can.moveTo(20,100);
+			//参数：第一个贝塞尔控制点的坐标，第二个贝塞尔控制点的坐标，结束点的坐标
+			can.bezierCurveTo(20,200,200,200,200,100);
+			can.stroke();
+			can.closePath();
+			can.beginPath();
+			can.fillStyle = "red";
+			BezierEllipse1(can,300,300,100,50);
+			can.fill();
+			can.closePath();
+		</script>
+	</body>
+</html>

@@ -1,0 +1,333 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.wrap{
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/bg.jpg');
+	/* css3 */
+	background-size: 100% 100%;
+	position: relative;
+}
+.wrap img{
+	position: absolute;
+}
+.tiaozhan{
+	left: 21%;
+	top: 12.3%;
+	width: 70.6%;
+}
+.yinqu{
+	top: 25.44%;
+	left: 2.18%;
+	width: 93.75%;
+}
+.p1_btns_wrap{
+	bottom: 4.66%;
+	left: 4.6875%;
+	width: 90.78%;
+}
+.ranking{
+	bottom: 6.77%;
+	left: 6.875%;
+	width: 20.625%;
+}
+.activity_rule{
+	bottom: 6.77%;
+	width: 20.625%;
+	left: 28.75%;
+}
+.prize{
+	bottom: 6.77%;
+	width: 20.625%;
+	left: 50.31%;
+}
+.shiyong{
+	bottom: 6.77%;
+	width: 20.625%;
+	left: 72.968%;
+}
+.start_game{
+	left: 30.468%;
+	width: 34.53%;
+	bottom: 20.686%;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+}
+.shou{
+	left: 58.125%;
+	width: 13.75%;
+	bottom: 24.47%;
+}
+.p1_form{
+	position: absolute;
+	left: 13.28%;
+	top: 19.63%;
+	width: 74.21%;
+}
+#user_data{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+}
+#user_data input{
+	position: absolute;
+	font-size: 1.5em;
+	width: 55.78%;
+	height: 6.16%;
+	left: 22.81%;
+	background-color: #f2bb00;
+	border: 1px solid red;
+	border-radius: 2% 1.14%;
+}
+#name{
+	top: 34.5%;
+}
+#tel{
+	top: 43.13%;
+}
+.p1_sub{
+	position: absolute;
+	top: 53.69%;
+	left: 30.46%;
+	width: 40.625%;
+}
+.close{
+	position: absolute;
+	top: 15.93%;
+	left: 81.4%;
+	width: 4.7%;
+}
+#game{
+	display: none;
+	width: 100%;
+	height: 100%;
+	background-image: url('../img/bg2.png');
+	background-size: 100% 100%;
+	position: relative;
+	overflow: hidden;
+}
+#game img{
+	position: absolute;
+}
+.p2_kuang{
+	top: 12.94%;
+	left: 8.9%;
+	width: 82.81%;
+}
+#p2_txt{
+	top: 15.22%;
+	left: 14.68%;
+	width: 70.625%;
+}
+.p2_scoring1{
+	top: 32.83%;
+	width: 12.03%;
+	left: 22.03%;
+}
+.p2_scoring2{
+	top: 32.83%;
+	width: 12.03%;
+	left: 36.56%;
+}
+.p2_scoring3{
+	top: 32.83%;
+	width: 12.03%;
+	left: 50.46%;
+}
+.shizhong{
+	left: 66.09%;
+	top: 33.45%;
+	width: 16.09%;
+}
+.count{
+	position: absolute;
+	color: white;
+	font-size: 2rem;
+	left: 25.78%;
+	top: 35.74%;
+}
+.count:nth-child(2){
+	left: 40%;
+}
+.count:nth-child(3){
+	left: 54%;
+}
+.clock{
+	position: absolute;
+	top: 35.74%;
+	left: 70%;
+	color: #a2794a;
+	font-size: 1.8rem;
+}
+.p2_shou{
+	left: 62.34%;
+	top: 66.99%;
+	width: 38.28%;
+}
+.qian_sh{
+	left: 20.156%;
+	top: 64.34%;
+	width: 59.53%;
+}
+.p2_qian{
+	left: 20.625%;
+	top: 59.5%;
+	width: 56.71%;
+}
+.p2_zhuan{
+	bottom: 0;
+	width: 100%;
+}
+#rank{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+}
+.ranking_bg{
+	position: absolute;
+	left: 13.9%;
+	top: 19.63%;
+	width: 73.9%;
+}
+#rule{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+}
+.rule_bg{
+	position: absolute;
+	top: 19.89%;
+	left: 13.43%;
+	width: 73.43%;
+}
+.rule_txt{
+	position: absolute;
+	top: 21.9%;
+	left: 18.125%;
+	width: 63.75%;
+	height: 51%;
+	font-size: 1em;
+	overflow: scroll;
+}
+#rule_title{
+	position: absolute;
+	width: 100%;
+	text-align: center;
+}
+#prize{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+}
+#shuoming{
+	display: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.7);
+	top: 0;
+}
+#game_over{
+	display: none;
+	background-image: url('../img/p3_bg.jpg');
+	width: 100%;
+	height: 100%;
+	background-size: 100% 100%;
+	position: relative;
+}
+#game_over img{
+	position: absolute;
+}
+.p3_acquire{
+	left: 15.78%;
+	width: 70.3%;
+	top: 14.08%;
+}
+.p3_again{
+	width: 27.96%;
+	left: 16.09%;
+	top: 56.51%;
+}
+.p3_share_btn{
+	width: 27.96%;
+	left: 59.375%;
+	top: 56.51%;
+}
+#zhanji{
+	position: absolute;
+	top: 36.26%;
+	left: 15.156%;
+	/* width: 70.625%; */
+	height: 2.68%;
+	padding: 2.68% 0;
+	border-radius: 0.3em;
+	background-color: white;
+	color: #d21026;
+}
+.p3_txt{
+	color: white;
+	position: absolute;
+	top: 32.13%;
+	width: 100%;
+	text-align: center;
+}
+#money_count{
+	position: absolute;
+	color: white;
+	top: 22.7%;
+	width: 100%;
+	font-size: 3em;
+	text-align: center;
+}
+#rank_list{
+	position: absolute;
+	left: 19.53%;
+	top: 27.81%;
+	width: 63.59%;
+	height: 44%;
+	overflow: scroll;
+}
+#rank_list li{
+	border-bottom: 1px dashed #999;
+	padding: 1.49% 0;
+	height: 8.8%;
+}
+.headImg{
+	width: 10.625%;
+	border-radius: 50%;
+	position: relative;
+	left: 8.9%;
+}
+#rank_name{
+	position: absolute;
+	left: 25%;
+	margin-top: 2%;
+	text-align: left;
+}
+#rank_score{
+	position: absolute;
+	margin-top: 2%;
+	right: 2.5%;
+}
+.titleImg{
+	width: 5.53%;
+}
