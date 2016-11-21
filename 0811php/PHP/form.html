@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+file文件上传时，需要在form标签中添加属性enctype="multipart/form-data"
+<form action="6.form.php" method="post" enctype="multipart/form-data">
+    用户名:<input type="text" name="username">
+    密码: <input type="text" name="password">
+    <input type="submit" value="提交">
+
+    <input type="file" name="file">
+
+
+
+    <!--B/S架构： 浏览器 brower     服务器server   http协议(要用同一种语言沟通)-->
+             <!--request请求      response响应  200成功  404找不到文件  301重定向-->
+
+    <!--Accept: 能接受东西的类型-->
+    <!--Accept-Encoding:gzip, deflate 浏览器支持的编码类型-->
+    <!--Accept-Language:zh-CN,zh;q=0.8,en;q=0.6 语言-->
+    <!--Cache-Control:no-cache 缓存-->
+    <!--Connection:keep-alive  保持连接-->
+    <!--Content-Length:43  内容的长度-->
+    <!--Content-Type:application/x-www-form-urlencoded(编码)   内容的类型-->
+    <!--Cookie:Webstorm-f254d5d5=60de5313;-->
+    <!--Host:localhost  主机的名字-->
+    <!--Origin:http://localhost-->
+    <!--Pragma:no-cache-->
+    <!--Referer:http://localhost/0811/PHP/form.html-->
+    <!--Upgrade-Insecure-Requests:1-->
+    <!--User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_1) 浏览器的系统-->
+
+</form>
+
+</body>
+</html>
