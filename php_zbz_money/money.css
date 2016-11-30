@@ -1,0 +1,367 @@
+*{
+    margin:0;
+    padding: 0;
+}
+body,html{
+    height: 100%;
+
+}
+.all{
+    background: url("img/bg1.png") no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    /*display: none;*/
+}
+.logo{
+    margin-left:3.9%;
+    margin-top: 1.5%;
+}
+.logo img:nth-child(1){
+    width: 15.7815%;
+}
+.logo img:nth-child(2){
+    width: 38.4375%;
+}
+#start{
+    position: absolute;
+    top:59.419%;
+    left:28.125%;
+    width: 46.875%;
+    height: 22.271%;
+    animation: pulse 2s 1s infinite;
+}
+#start img{
+    width: 100%;
+}
+.box{
+    position: absolute;
+    top: 84.066%;
+    left:3.68%;
+    width: 90.625%;
+    background-color: #d72439;
+    border-radius: 20px;
+    padding-right: 2.34%;
+}
+.box div{
+    width: 22.14%;
+    display: inline-block;
+    margin: 1.32% 0;
+    margin-left: 2.34%;
+}
+.box div img{
+    width: 102%;
+}
+#bgc{
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    display: none;
+}
+#esc{
+    position: absolute;
+    top:15.845%;
+    right: 12.5%;
+    width: 4.687%;
+    height: 2.64%;
+    display: none;
+}
+#esc img{
+    width: 100%;
+}
+#rules{
+    position: absolute;
+    top:19.045%;
+    left:11.281%;
+    z-index: 1;
+    width: 76.43%;
+    display: none;
+    z-index: 9999;
+}
+#rules img{
+    width: 100%;
+}
+.challenge{
+    width: 71.4687%;
+    position: absolute;
+    top: 12.764%;
+    left: 21.875%;
+    animation: bounceIn 1.5s 1s infinite;
+}
+.challenge img{
+    width: 100%;
+}
+.text{
+    width: 96.5625%;
+    position: absolute;
+    top:25.528%;
+    left:0;
+    animation: swing 1.5s  infinite;
+}
+.text img{
+    width: 100%;
+}
+#prizes{
+    position: absolute;
+    width: 77.75%;
+    height: 44.19%;
+    top:19.045%;
+    left:10.281%;
+    display: none;
+    z-index: 9999;
+}
+#prizes img{
+    width: 100%;
+}
+#states{
+    position: absolute;
+    width: 76.75%;
+    height: 51.848%;
+    top:19.045%;
+    left:11.281%;
+    display: none;
+    z-index: 9999;
+}
+#states img{
+    width: 100%;
+}
+.data{
+    position: absolute;
+    width: 73.75%;
+    height: 50.19%;
+    background-color:#ffead1;
+    border: 6px solid #e33145;
+    border-radius: 30px;
+    top:19.045%;
+    left:13.281%;
+    text-align: center;
+    display: none;
+    z-index: 9999;
+}
+.data .logos{
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 3%;
+}
+.data p{
+    width: 51.9%;
+    margin-left: 21.186%;
+    font-size: 32px;
+}
+.nickname{
+    width: 75.211%;
+    height: 14.541%;
+    background-color:#f2bb00;
+    outline: none;
+    border: 5px solid #e33145;
+    border-radius: 20px;
+    margin-top: 5.97%;
+    font-size: 50px;
+    color: black;
+    padding-left: 30px;
+}
+.tel{
+    width: 75.211%;
+    height: 14.541%;
+    background-color:#f2bb00;
+    outline: none;
+    border: 5px solid #e33145;
+    border-radius: 20px;
+    margin-top: 5.97%;
+    font-size: 50px;
+    color: black;
+    padding-left: 30px;
+}
+.data .games{
+    width: 57.08%;
+    margin-top: 8%;
+}
+.rankings{
+    position: absolute;
+    width: 73.75%;
+    height: 50.19%;
+    background-color:#ffead1;
+    border: 6px solid #e33145;
+    border-radius: 30px;
+    top:19.045%;
+    left:13.281%;
+    /*text-align: center;*/
+    padding-bottom: 7.87%;
+    display: none;
+    z-index: 9999;
+}
+.rankings .sq1{
+    width: 50%;
+    margin-left: 25%;
+}
+.rankings .list{
+    width: 86.86%;
+    height: 84.251%;
+    margin:0 auto;
+    list-style-type: none;
+    margin-top: 1%;
+}
+.rankings .list li{
+    height: 18.518%;
+    border-bottom: 3px dashed #c7c7c7;
+    overflow: hidden;
+}
+.list1 .sq2{
+    float: left;
+    width: 8.474%;
+    margin-top: 5.83%;
+    font-size: 72px;
+}
+.list1 .src{
+    float: left;
+    width: 13.96%;
+    height: 70%;
+    display: inline-block;
+    border-radius: 70px;
+    /*background-color: red;*/
+    margin-left: 4.878%;
+    margin-top: 3.55%;
+}
+.list1 .score{
+    font-size: 42px;
+    float: right;
+    margin-top: 5.83%;
+
+}
+.list1 .name{
+    margin-left: 4.761%;
+    margin-top: 5.83%;
+    font-size: 42px;
+    display: inline-block;
+}
+
+.all1{
+    width: 100%;
+    height: 100%;
+    background: url("img/bgs.png") no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    display: none;
+}
+
+.wall{
+    width: 100%;
+    position: absolute;
+    bottom: -45px;
+    left:0;
+    z-index: 9999999;
+}
+.finger{
+    width: 36.718%;
+    position: absolute;
+    top:71.9%;
+    right:1.56%;
+    animation:bounceOutUp 1s infinite;
+    z-index: 11;
+}
+.title{
+    width: 69.656%;
+    position: absolute;
+    top:14.746%;
+    left:14.593%;
+    animation: tada 1.5s infinite;
+}
+.scoress{
+    font-size: 50px;
+    position: absolute;
+    right: 23%;
+    top:35.5%;
+}
+.moneys{
+    width: 59.375%;
+    position: absolute;
+    top:64.26%;
+    left:20.3125%;
+}
+.money{
+    width: 56.875%;
+    position: absolute;
+    top:59.419%;
+    left:20.3125%;
+    z-index: 99999;
+}
+.bai{
+    font-size: 50px;
+    position: absolute;
+    top:35.5%;
+    left:26.5%;
+}
+.shi{
+    font-size: 50px;
+    position: absolute;
+    top:35.5%;
+    left:41%;
+}
+.ge{
+    font-size: 50px;
+    position: absolute;
+    top:35.5%;
+    left:55%;
+}
+.all2{
+    width: 100%;
+    height: 100%;
+    background: url("img/bg3.png") no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+    display: none;
+}
+.again{
+    width: 27.656%;
+    position: absolute;
+    top:56.778%;
+    left:16.4%;
+}
+.share{
+    width: 27.656%;
+    position: absolute;
+    top: 56.778%;
+    left:59.375%;
+}
+.rmb{
+    color: white;
+    font-size: 126px;
+    position: absolute;
+    top: 25%;
+    left:36%;
+}
+.strong{
+    position: absolute;
+    top:32%;
+    left:24%;
+    font-size: 37px;
+    color: white;
+}
+.zhanji{
+    position: absolute;
+    top:37.5%;
+    left:16%;
+    color: red;
+    font-size: 45px;
+}
+.dollar{
+    width: 20.9375%;
+    position: absolute;
+    top:51.056%;
+    left:59.375%;
+}
+.mengban{
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.8;
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="animate.css">
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        body,html{
+            height: 100%;
+        }
+        .all1{
+            width: 100%;
+            height: 100%;
+            background: url("img/bgs.png") no-repeat;
+            background-size: 100% 100%;
+            overflow: hidden;
+        }
+
+        .wall{
+            width: 100%;
+            position: absolute;
+            bottom: -45px;
+            left:0;
+            z-index: 999;
+        }
+        .finger{
+            width: 36.718%;
+            position: absolute;
+            top:71.9%;
+            right:1.56%;
+            animation:bounceOutUp 1s infinite;
+            z-index: 11;
+        }
+        .title{
+            width: 69.656%;
+            position: absolute;
+            top:14.746%;
+            left:14.593%;
+            animation: tada 1.5s infinite;
+        }
+        .score{
+            font-size: 50px;
+            position: absolute;
+            right: 23%;
+            top:35.5%;
+        }
+        .moneys{
+            width: 59.375%;
+            position: absolute;
+            top:64.26%;
+            left:20.3125%;
+        }
+        .money{
+            width: 56.875%;
+            position: absolute;
+            top:59.419%;
+            left:20.3125%;
+        }
+        .money img{
+            width: 100%;
+        }
+        span{
+            font-size: 50px;
+        }
+        .bai{
+            position: absolute;
+            top:35.5%;
+            left:26.5%;
+        }
+        .shi{
+            position: absolute;
+            top:35.5%;
+            left:41%;
+        }
+        .ge{
+            position: absolute;
+            top:35.5%;
+            left:55%;
+        }
+    </style>
+</head>
+<body>
+<div class="all1">
+    <img class="wall" src="img/wall.png" alt="">
+    <img class="finger" src="img/finger.png" alt="">
+    <img class="title" src="img/txt1.png" alt="">
+    <span class="score">60</span>
+    <img class="moneys" src="img/moneys.png" alt="">
+    <img class="money" src="img/money.png" alt="">
+    <span class="bai">0</span>
+    <span class="shi">0</span>
+    <span class="ge">0</span>
+</div>
+<script src="jquery-2.2.3.min(1).js"></script>
+<script src="zepto.min.js"></script>
+<script src="zepto.touch.js"></script>
+<script type="text/javascript">
+    $(function () {
+        var timer = null;
+        var timers = null;
+        var imgsrc = 1;
+        var gescore = 0;
+        var shiscore = 0;
+        var baiscore = 0;
+        var time = 60;
+        timer = setInterval(function () {
+            imgsrc++;
+            if (imgsrc > 3){
+                imgsrc = 1;
+            }
+        $(".title").attr("src","img/txt"+imgsrc+".png")
+        },2000);
+        
+        timers = setInterval(function () {
+            time-=1;
+            $(".score").html(time);
+            if(time == 0){
+                clearInterval(time);
+                $(".all").css("display","none");
+            }
+        },1000);
+
+
+
+        $(document).on("swipeUp",".money",function () {
+            $(".finger").remove();
+            gescore++;
+            $(".money").animate({
+                width:"30%",
+                height:"30%",
+                top:"10%",
+                left:"40%",
+                opacity:0.5
+            },500,function () {
+                $(this).remove();
+            })
+            var img = $("<img src='img/money.png' class='money'>");
+            $(".all").append(img);
+
+            $(".ge").html(gescore);
+            if (gescore > 9){
+                gescore = 0;
+                $(".ge").html(gescore);
+                shiscore+=1;
+            }
+            $(".shi").html(shiscore);
+            if(shiscore > 9){
+                shiscore = 0;
+                $(".shi").html(shiscore);
+                baiscore+=1;
+            }
+            $(".bai").html(baiscore);
+
+        })
+
+    })
+    
+    
+
+    
+    
+    document.addEventListener("touchmove",function (e) {
+        e.preventDefault();
+    })
+</script>
+</body>
+</html>

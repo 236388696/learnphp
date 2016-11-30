@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    用户名：<input type="text" id="user">
+    密码：<input type="text" id="password">
+    <button id="logon">登录</button>
+</div>
+<img id="img" src="" alt="" style="display:none">
+<script src="../jquery-2.2.3.min.js"></script>
+<script>
+    <!--后台给的接口-->
+    //路径url：homework.php
+    //请求方法method:get/host
+    //参数:user(string):用户名／ pwd(string):密码
+    //返回值：{"err":0,"headImg":"xx.jpg"}
+    //err:0成功，1失败
+var user=document.getElementById("user");
+var password=document.getElementById("password");
+var logon=document.getElementById("logon");
+var img=document.getElementById("img");
+    console.log(img);
+    logon.onclick=function () {
+        //路径    参数   回调函数,成功的话，返回一个数据data
+        //username:后面的值是客户往里填的value值,把它传给数据库
+        $.post("zhou.php",{username:user.value,password:password.value},function (data) {
+            var obj=JSON.parse(data);
+            //成功
+            if(obj.err ==0){
+
+                img.style.display = "block";
+                img.src=obj.headimg;
+
+            }else{
+                alert("失败");
+            }
+        })
+    }
+
+</script>
+
+</body>
+</html>
+

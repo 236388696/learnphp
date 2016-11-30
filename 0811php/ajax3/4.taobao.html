@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="text">
+<script src="../ajax1/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    function cb(obj) {
+        console.log(obj);
+    }
+    $(function(){
+        $("#text").on("keyup",function () {
+            console.log(1);
+            $("script[name=jsonp]").remove();
+            //script标签 只会加载一次，所以加载完成后就可以删掉了
+            var script=$("<script>");
+            script.attr({"src":"https://suggest.taobao.com/sug?code=utf-8&q="+$("#text").val()+"&_ksTS=1478248626452_2836&callback=cb&code=utf-8&k=1&bucketid=17&src=tmall_pc&isg=An9_CnylG6qVWhDe4toay56kDlW3TQ5lY2_7ShFMbS51IJ2iGDUTVpD2FEck&isg2=AuzsMhixUWjsWFpU2q1wm6LzPMAe05BP",
+            name:"jsonp"
+            });
+            $("body").append(script);
+            script.remove();
+        })
+
+    })
+
+
+
+</script>
+<script src="https://suggest.taobao.com/sug?code=utf-8&q=李威&_ksTS=1478248626452_2836&callback=cb&code=utf-8&k=1&bucketid=17&src=tmall_pc&isg=An9_CnylG6qVWhDe4toay56kDlW3TQ5lY2_7ShFMbS51IJ2iGDUTVpD2FEck&isg2=AuzsMhixUWjsWFpU2q1wm6LzPMAe05BP"></script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    用户名：<input type="text" id="user">
+    密码： <input type="text" id="pwd">
+    <button id="login">登录</button>
+    <!--exec执行   primary key主键-->
+    <!--我只写前端，往后台要接口，传什么参数-->
+    <!--id：整型int (auto inc自己按顺序加行)-->
+</div>
+<img id="img" src="" alt="" style="display: none;">
+<script src="../jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    <!--后台给的接口-->
+    //路径url：homework.php
+    //请求方法method:get/host
+    //参数:user(string):用户名／ pwd(string):密码
+    //返回值：{"err":0,"headImg":"xx.jpg"}
+    //err:0成功，1失败
+    var user=document.getElementById("user");
+    var pwd=document.getElementById("pwd");
+    var login=document.getElementById("login");
+    var img=document.getElementById("img");
+    login.onclick=function () {
+        //路径    参数   回调函数,成功的话，返回一个数据data
+          $.post("homework.php",{user:user.value,pwd:pwd.value},function (data) {
+              //把后台返回的json字符串转成js对象使用
+              var obj=JSON.parse(data);
+              //成功
+              if(obj.err==0){
+                  img.style.display="block";
+                  img.src=obj.headImg;
+                  //失败
+              }else{
+                  alert("错误");
+              }
+          })
+    }
+
+</script>
+
+</body>
+</html>

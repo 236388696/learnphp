@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="jquery-2.2.3.min.js" ></script>
+<script type="text/javascript">
+    //参数1.要请求的url
+    //参数2:需要传输的数据，对象类型
+    //参数3:请求成功的回调函数
+    $.get("1.php",{username:"大耳朵图图",password:"123"},function (data) {
+        console.log(data);
+    })
+
+    $.post("1.php",{username:"大耳朵图图",password:"123"},function (data) {
+        console.log(data);
+    })
+    
+    $.ajax({
+        url:"1.txt",
+        type:"get",
+        data:{},
+        success:function (data) {
+            console.log(data);
+        },
+        error:function (err) {
+            console.log(err);
+        },
+        //传送中
+        complete:function (xhr,reason) {
+            console.log(reason);
+        }
+        
+    })
+</script>
+
+</body>
+</html>
